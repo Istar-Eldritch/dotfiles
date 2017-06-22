@@ -12,3 +12,7 @@
   cod = checkout development
   com = checkout master
   last = log -1 HEAD
+	hist = log --pretty=format:'%h %ad %ae | %s%d [%an]' --graph --date=short
+
+[color]
+	ui = true
