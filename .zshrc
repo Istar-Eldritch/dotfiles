@@ -2,9 +2,6 @@
 #Antigen
 source $HOME/.antigen.zsh
 
-# export TERM=screen-256color
-# tic ~/$TERM.ti
-
 export BROWSER=chromium
 
 # Load the oh-my-zsh's library.
@@ -25,6 +22,9 @@ antigen theme gallifrey
 
 antigen apply
 
+# Run tmux when new terminal is created
+[[ $TERM != "screen-256color" ]] && exec tmux attach
+
 # Use vim as editor
 export EDITOR='nvim'
 
@@ -33,7 +33,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 export PATH=$PATH:~/.local/bin:~/.cabal/bin:~/.gem/ruby/2.4.0/bin
 
 # NVM ON Linux
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
@@ -42,15 +42,9 @@ export GPG_TTY=`tty`
 
 eval $(ssh-agent)
 
-. /home/istar/.nix-profile/etc/profile.d/nix.sh
-
 ##
-# Kubernetes and DevOps
+# AWS Credentials
 ##
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
 
 function setupAWS() {
   if [ "$1" = "--unset" ]
@@ -63,28 +57,43 @@ function setupAWS() {
   fi
 }
 
-function kenv() {
-  if [ "$1" != "" ]
-  then
-    setupAWS
-    export KOPS_STATE_STORE="s3://k8s-$1-state-store"
-    kops export kubecfg "k8s-$1.repositive.io"
-  else
-    setupAWS --unset
-    unset KOPS_STATE_STORE
-  fi
-}
+##
+# Kubernetes Specific
+##
 
-function dme() {
-  if [ "$1" != "" ]
-  then
-     setupAWS
-     eval $(docker-machine env "$1");
-  else
-    setupAWS --unset
-    eval $(docker-machine env --unset);
-  fi
-}
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+
+  function kenv() {
+    if [ "$1" != "" ]
+    then
+      setupAWS
+      export KOPS_STATE_STORE="s3://k8s-$1-state-store"
+      kops export kubecfg "k8s-$1.repositive.io"
+    else
+      setupAWS --unset
+      unset KOPS_STATE_STORE
+    fi
+  }
+
+fi
+
+##
+# Docker & Docker Machine Specific
+##
+
+if [ $commands[docker-machine] ]; then
+  function dme() {
+    if [ "$1" != "" ]
+    then
+       setupAWS
+       eval $(docker-machine env "$1");
+    else
+      setupAWS --unset
+      eval $(docker-machine env --unset);
+    fi
+  }
+fi
 
 if [[ $TERM = dumb ]]; then
   unset zle_bracketed_paste
