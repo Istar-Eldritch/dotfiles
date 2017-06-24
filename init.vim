@@ -119,3 +119,6 @@ set statusline+=%*
 com! FormatJSON %!python -m json.tool
 " show quotes on json objects
 set conceallevel=0
+
+" No key scape time
+set timeoutlen=1000 ttimeoutlen=0

@@ -98,3 +98,6 @@ fi
 if [[ $TERM = dumb ]]; then
   unset zle_bracketed_paste
 fi
+
+# 10ms for key sequences
+KEYTIMEOUT=1
