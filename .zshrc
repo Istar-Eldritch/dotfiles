@@ -1,32 +1,28 @@
-
-#Antigen
-source $HOME/.antigen.zsh
-
-export BROWSER=chromium
-
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-antigen bundle git
-antigen bundle docker
-
-if [ "$OSTYPE"="darwin11.0" ]; then
-  antigen-bundle osx
-fi
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zsh-users/zsh-autosuggestions
-
-# Geometry theme
-antigen theme gallifrey
-
-antigen apply
-
 # Run tmux when new terminal is created
 [[ $TERM != "screen-256color" ]] && exec tmux attach
 
+
+# Plugin Manager
+source ~/.zplug/init.zsh
+zplug "zplug/zplug", hook-build: 'zplug --self-manage'
+
+# Load the oh-my-zsh's library.
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "potasiyam/cmder-zsh-theme", as:theme
+
+if ! zplug check; then
+  zplug install
+fi
+
+zplug load
+
 # Use vim as editor
-export EDITOR='nvim'
+export EDITOR='vim'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
@@ -34,13 +30,10 @@ export PATH=$PATH:~/.local/bin:~/.cabal/bin:~/.gem/ruby/2.4.0/bin
 
 # NVM ON Linux
 export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export GPG_TTY=`tty`
-
-eval $(ssh-agent)
 
 ##
 # AWS Credentials

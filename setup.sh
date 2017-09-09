@@ -15,7 +15,10 @@ then
 else
     cd ~/.tmux/plugins/tpm
     git pull https://github.com/tmux-plugins/tpm
+
 fi
+
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 
 echo PLUGIN LOADERS UPDATED
 
@@ -26,8 +29,6 @@ ln -s $CURRENT_DIR/.tmux.conf $HOME/.tmux.conf
 
 rm -fr ~/.zshrc
 ln -s $CURRENT_DIR/.zshrc $HOME/.zshrc
-rm -fr ~/.antigen.zsh
-ln -s $CURRENT_DIR/antigen/antigen.zsh $HOME/.antigen.zsh
 
 rm -fr $XDG_CONFIG_HOME/nvim/init.vim
 ln -s $CURRENT_DIR/init.vim $XDG_CONFIG_HOME/nvim/init.vim
