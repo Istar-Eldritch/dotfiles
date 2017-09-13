@@ -94,3 +94,5 @@ fi
 
 # 10ms for key sequences
 KEYTIMEOUT=1
+
+alias clip='xclip -sel clip'
