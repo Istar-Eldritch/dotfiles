@@ -6,7 +6,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 "Plug 'Valloric/YouCompleteMe'
@@ -48,7 +48,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Styles
 set t_Co=256
 set background=dark
-colorscheme solarized8_dark_high
+colorscheme solarized
 let g:indentLine_color_term = 24
 let g:indentLine_char = '·'
 set laststatus=2
@@ -141,3 +141,15 @@ let g:vrc_auto_format_response_enabled = 1
 let g:vrc_show_command = 0
 " Set trigger key (<C-j> by default)
 let g:vrc_trigger = ',,sr'
+
+if has("autocmd")
+    au InsertEnter *
+        \ if v:insertmode == 'i' |
+        \   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute "!gnome-terminal-cursor-shape.sh underline" |
+        \ endif
+    au InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+    au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+endif
+
