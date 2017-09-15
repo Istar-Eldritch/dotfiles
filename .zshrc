@@ -9,6 +9,7 @@ zplug "zplug/zplug", hook-build: 'zplug --self-manage'
 # Load the oh-my-zsh's library.
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/pass", from:oh-my-zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
@@ -96,3 +97,5 @@ fi
 KEYTIMEOUT=1
 
 alias clip='xclip -sel clip'
+alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
+
