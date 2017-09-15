@@ -3,11 +3,9 @@ dotfiles
 
 **Installing**
 
-Clone with submodules:
+Clone:
 ```bash
   git clone git@github.com:Istar-Eldritch/dotfiles.git
-  git submodule init
-  git submodule update
 ```
 
 Execute the `setup.sh` script:
@@ -25,8 +23,8 @@ Execute the `setup.sh` script:
 **Shell**
 
 * I use zsh
-* [antigen](http://antigen.sharats.me/) as a plugin manager.
-* Antigen is linked to the submodule during the setup process in `setup.sh`
+* [zplug](https://github.com/zplug/zplug) as a plugin manager.
+* zplug is installed during when running `setup.sh`, be aware of the `awk` dependency in your operating system. Check zplug docs for more info.
 * Configuration on `.zshrc`
   * Custom Functions:
     - `setupAWS [--unset]`: Sets the ENV_VARS for AWS access 
@@ -42,6 +40,11 @@ Execute the `setup.sh` script:
   * Keybinds:
     - Resize panels
     - Clipboard (VI mode)
+
+**Terminal Emulator**
+
+* I'm using `gnome-terminal`
+* `gnome-terminal-cursor-shape.sh` it's a script integrated with vim to change the cursor shape on different vim modes
 
 **Specific Configs for Lenovo X220**
 
