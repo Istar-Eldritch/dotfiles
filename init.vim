@@ -10,11 +10,10 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 "Plug 'Valloric/YouCompleteMe'
-Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'w0rp/ale'
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
-Plug 'Shougo/vimproc.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
@@ -48,6 +47,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Styles
 set t_Co=256
 set background=dark
+let g:solarized_termcolors = 1
+let g:solarized_termtrans = 1
 colorscheme solarized
 let g:indentLine_color_term = 24
 let g:indentLine_char = '·'
@@ -123,8 +124,6 @@ set statusline+=%*
 "let g:syntastic_typescript_tsc_fname = ''
 
 com! FormatJSON %!python -m json.tool
-" show quotes on json objects
-set conceallevel=0
 
 " No key scape time
 set timeoutlen=1000 ttimeoutlen=0
@@ -153,3 +152,4 @@ if has("autocmd")
     au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
 endif
 
+imap <c-space> <c-x><c-o>
