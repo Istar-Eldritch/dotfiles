@@ -36,6 +36,9 @@ ln -s $CURRENT_DIR/init.vim $XDG_CONFIG_HOME/nvim/init.vim
 rm -fr ~/.gitconfig
 ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
 
+rm -fr ~/.gitignore_global
+ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
+
 rm -fr $HOME/.xinitrc
 ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
 

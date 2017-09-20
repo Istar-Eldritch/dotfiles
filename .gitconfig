@@ -18,3 +18,5 @@
 	ui = true
 [push]
 	default = simple
+[core]
+	excludesfile = /home/istar/.gitignore_global
