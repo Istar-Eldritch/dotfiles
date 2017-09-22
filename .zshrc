@@ -63,6 +63,10 @@ if [ $commands[kubectl] ]; then
     then
       setupAWS
       export KOPS_STATE_STORE="s3://k8s-$1-state-store"
+      if [ "$1" = "production" ]
+      then
+        export KOPS_STATE_STORE="s3://k8s-$1-state-store-repositive"
+      fi
       kops export kubecfg "k8s-$1.repositive.io"
     else
       setupAWS --unset
@@ -96,6 +100,14 @@ fi
 # 10ms for key sequences
 KEYTIMEOUT=1
 
+# Aliases
 alias clip='xclip -sel clip'
 alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
+alias ls='exa -lh'
+
+# History opts
+setopt inc_append_history
+setopt share_history
+
+
 
