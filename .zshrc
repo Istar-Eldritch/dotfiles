@@ -14,6 +14,7 @@ zplug "plugins/pass", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "rust-lang/zsh-config"
 zplug "potasiyam/cmder-zsh-theme", as:theme
 
 if ! zplug check; then

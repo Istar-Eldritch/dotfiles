@@ -27,6 +27,7 @@ Plug 'alunny/pegjs-vim'
 Plug 'nono/vim-handlebars'
 Plug 'raichoo/purescript-vim'
 Plug 'diepm/vim-rest-console'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
@@ -122,8 +123,7 @@ set statusline+=%*
 "let g:syntastic_typescript_checkers = ['tsuquyomi']
 "let g:syntastic_typescript_tsc_args = ''
 "let g:syntastic_typescript_tsc_fname = ''
-
-com! FormatJSON %!python -m json.tool
+com! FormatJSON %!js-beautify -s 2
 
 " No key scape time
 set timeoutlen=1000 ttimeoutlen=0
@@ -140,6 +140,11 @@ let g:vrc_auto_format_response_enabled = 1
 let g:vrc_show_command = 0
 " Set trigger key (<C-j> by default)
 let g:vrc_trigger = ',,sr'
+
+let g:vrc_curl_opts = {
+  \ '-s': '',
+  \ '-S': ''
+\}
 
 if has("autocmd")
     au InsertEnter *
