@@ -109,7 +109,9 @@ set statusline+=%{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'rust': ['cargo']}
+let g:ale_linters = {'rust': ['rls']}
+let g:ale_rust_rls_executable = "/home/istar/.cargo/bin/rls"
+
 "set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
@@ -156,8 +158,9 @@ if has("autocmd")
     au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
 endif
 
-" Rust Racer
+" Rust & Racer
 let g:racer_cmd = "/home/istar/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+let g:rust_recommended_style = 0
 
 imap <c-space> <c-x><c-o>
