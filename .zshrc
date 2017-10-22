@@ -29,6 +29,7 @@ export EDITOR='vim'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 export PATH=$PATH:~/.local/bin:~/.cabal/bin:~/.gem/ruby/2.4.0/bin
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # NVM ON Linux
 export NVM_DIR="$HOME/.nvm"

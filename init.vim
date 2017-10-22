@@ -9,7 +9,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'w0rp/ale'
 Plug 'Quramy/tsuquyomi'
@@ -22,10 +21,9 @@ Plug 'Shougo/unite.vim'
 Plug 'mhartington/vim-typings'
 Plug 'shime/vim-livedown'
 Plug 'rust-lang/rust.vim'
-Plug 'eagletmt/ghcmod-vim'
+Plug 'racer-rust/vim-racer'
 Plug 'alunny/pegjs-vim'
 Plug 'nono/vim-handlebars'
-Plug 'raichoo/purescript-vim'
 Plug 'diepm/vim-rest-console'
 Plug 'elzr/vim-json'
 
@@ -111,6 +109,7 @@ set statusline+=%{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
+let g:ale_linters = {'rust': ['cargo']}
 "set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
@@ -156,5 +155,9 @@ if has("autocmd")
     au InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
     au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
 endif
+
+" Rust Racer
+let g:racer_cmd = "/home/istar/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 
 imap <c-space> <c-x><c-o>
