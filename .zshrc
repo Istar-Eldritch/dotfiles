@@ -108,6 +108,9 @@ alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/op
 alias ls='exa -lh'
 
 # History opts
+export HISTFILE=~/.histfile
+export SAVEHIST=1000000
+export HISTSIZE=1000000
 setopt inc_append_history
 setopt share_history
 
