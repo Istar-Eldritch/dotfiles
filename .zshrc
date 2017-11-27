@@ -109,8 +109,19 @@ KEYTIMEOUT=1
 
 # Aliases
 alias clip='xclip -sel clip'
-alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
-alias ls='exa -lh'
+
+if [ $commands[docker] ]; then
+  alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
+  alias psql='drun postgres:9.5 psql'
+fi
+
+if [ $commands[docker-compose] ]; then
+  alias dc='docker-compose'
+fi
+
+if [ $commands[exa] ]; then
+  alias ls='exa -lh'
+fi
 
 # History opts
 export HISTFILE=~/.histfile
