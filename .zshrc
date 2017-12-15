@@ -23,6 +23,34 @@ fi
 
 zplug load
 
+
+# ZSH bindkeys
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# ZSH in vi mode
+bindkey -v
+
+function zle-line-init zle-keymap-select {
+  if [ $KEYMAP = vicmd ]; then
+      # the command mode for vi
+      echo -ne "\e[2 q"
+  else
+      # the insert mode for vi
+      echo -ne "\e[5 q"
+  fi
+}
+
+# sessionfile=`find "${HOME}/.dbus/session-bus/" -type f`
+# export `grep "DBUS_SESSION_BUS_ADDRESS" "${sessionfile}" | sed '/^#/d'`
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # Use vim as editor
 export EDITOR='vim'
 
@@ -113,10 +141,14 @@ alias clip='xclip -sel clip'
 if [ $commands[docker] ]; then
   alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
   alias psql='drun postgres:9.5 psql'
+  alias pg_dump='drun postgres:9.5 pg_dump'
+  alias pnode='docker exec -it pnode'
+  alias iris='pnode iris'
 fi
 
 if [ $commands[docker-compose] ]; then
   alias dc='docker-compose'
+  alias dcu='dc up'
 fi
 
 if [ $commands[exa] ]; then
@@ -129,6 +161,4 @@ export SAVEHIST=1000000
 export HISTSIZE=1000000
 setopt inc_append_history
 setopt share_history
-
-
 

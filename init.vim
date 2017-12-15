@@ -26,6 +26,7 @@ Plug 'alunny/pegjs-vim'
 Plug 'nono/vim-handlebars'
 Plug 'diepm/vim-rest-console'
 Plug 'elzr/vim-json'
+Plug 'metakirby5/codi.vim'
 
 call plug#end()
 
@@ -146,17 +147,6 @@ let g:vrc_curl_opts = {
   \ '-s': '',
   \ '-S': ''
 \}
-
-if has("autocmd")
-    au InsertEnter *
-        \ if v:insertmode == 'i' |
-        \   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
-        \ elseif v:insertmode == 'r' |
-        \   silent execute "!gnome-terminal-cursor-shape.sh underline" |
-        \ endif
-    au InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
-    au VimLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
-endif
 
 " Rust & Racer
 let g:racer_cmd = "/home/istar/.cargo/bin/racer"
