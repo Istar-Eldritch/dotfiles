@@ -14,6 +14,7 @@
   last = log -1 HEAD
   put = push --follow-tags
   his = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=short --branches
+  rec = !git checkout $(git rev-list -n 1 HEAD -- $1) -- $1
   staash = stash --include-untracked
   staaash = stash --all
 
