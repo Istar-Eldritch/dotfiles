@@ -138,6 +138,12 @@ KEYTIMEOUT=1
 # Aliases
 alias clip='xclip -sel clip'
 
+if [ $commands[emacs] ]; then
+  function ems() {
+    emacsclient -nw $1 || (emacs --daemon && ems $1)
+  }
+fi
+
 if [ $commands[docker] ]; then
   alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
   alias psql='drun postgres:9.5 psql'
