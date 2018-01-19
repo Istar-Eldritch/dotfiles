@@ -150,6 +150,16 @@ if [ $commands[docker] ]; then
   alias pg_dump='drun postgres:9.5 pg_dump'
   alias pnode='docker exec -it pnode'
   alias iris='pnode iris'
+  export DOCKER_REGISTRY=registry.repositive.io:5000
+  export DOCKER_REGISTRY_CREDENTIAL_PATH="repositive/registry"
+  function registry() {
+    AUTH_HEADER="Authorization: Basic $(printf "$(pass $DOCKER_REGISTRY_CREDENTIAL_PATH/user):$(pass $DOCKER_REGISTRY_CREDENTIAL_PATH/password)" | base64)"
+    if [ "$1" == "catalog" ]; then
+      curl -H $AUTH_HEADER https://$DOCKER_REGISTRY/v2/_catalog
+    elif [ "$1" == "tags" ]; then
+      curl -H $AUTH_HEADER https://$DOCKER_REGISTRY/v2/$2/tags/list
+    fi
+  }
 fi
 
 if [ $commands[docker-compose] ]; then
@@ -168,3 +178,9 @@ export HISTSIZE=1000000
 setopt inc_append_history
 setopt share_history
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc'; fi
