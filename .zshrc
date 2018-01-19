@@ -138,6 +138,8 @@ KEYTIMEOUT=1
 # Aliases
 alias clip='xclip -sel clip'
 
+alias pubip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+
 if [ $commands[emacs] ]; then
   function ems() {
     emacsclient -nw $1 || (emacs --daemon && ems $1)
