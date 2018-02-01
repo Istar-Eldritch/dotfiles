@@ -147,6 +147,7 @@ if [ $commands[emacs] ]; then
 fi
 
 if [ $commands[docker] ]; then
+  alias dmem='docker stats $(docker ps --format={{.Names}})'
   alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
   alias psql='drun postgres:9.5 psql'
   alias pg_dump='drun postgres:9.5 pg_dump'
