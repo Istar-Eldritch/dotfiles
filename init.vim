@@ -3,10 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
@@ -16,7 +14,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-"Plug 'scrooloose/syntastic'
 Plug 'Shougo/unite.vim'
 Plug 'mhartington/vim-typings'
 Plug 'shime/vim-livedown'
@@ -27,6 +24,7 @@ Plug 'nono/vim-handlebars'
 Plug 'diepm/vim-rest-console'
 Plug 'elzr/vim-json'
 Plug 'metakirby5/codi.vim'
+Plug 'skielbasa/vim-material-monokai'
 
 call plug#end()
 
@@ -47,15 +45,38 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Styles
 set t_Co=256
 set background=dark
-let g:solarized_termcolors = 1
-let g:solarized_termtrans = 1
-colorscheme solarized
+colorscheme material-monokai
+let g:materialmonokai_subtle_spell=1
+let g:materialmonokai_custom_lint_indicators=0
+let g:materialmonokai_italic=1
+
+" Force transparency
+hi! Normal ctermbg=NONE guibg=NONE
+hi! NonText ctermbg=NONE guibg=NONE
+hi! VertSplit ctermbg=NONE guibg=NONE
+
+hi! LineNr ctermbg=NONE guibg=NONE
+" Ale
+hi! ALEErrorSign ctermbg=NONE guibg=NONE
+hi! ALEWarningSign ctermbg=NONE guibg=NONE
+" GitGutter
+hi! GitGutterAdd ctermbg=NONE guibg=NONE
+hi! GitGutterChange ctermbg=NONE guibg=NONE
+hi! GitGutterDelete ctermbg=NONE guibg=NONE
+hi! GitGutterChangeDelete ctermbg=NONE guibg=NONE
+
+if has("termguicolors")     " set true colors
+    set t_8f=\[[38;2;%lu;%lu;%lum
+    set t_8b=\[[48;2;%lu;%lu;%lum
+    set termguicolors
+endif
+
 let g:indentLine_color_term = 24
 let g:indentLine_char = '·'
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='materialmonokai'
 
 " Automatically run markdown previews
 let g:livedown_autorun = 1
@@ -110,8 +131,8 @@ set statusline+=%{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'rust': ['rls']}
-let g:ale_rust_rls_executable = "/home/istar/.cargo/bin/rls"
+let g:ale_linters = {'rust': ['rls', 'cargo']}
+let g:ale_rust_rls_executable = "/usr/bin/rls"
 
 "set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
