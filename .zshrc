@@ -89,6 +89,11 @@ function setupAWS() {
 ##
 # Kubernetes Specific
 ##
+# The next line updates PATH for the Google Cloud SDK. Kubernetes is part of it
+if [ -f '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc'; fi
 
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
@@ -180,10 +185,3 @@ export SAVEHIST=1000000
 export HISTSIZE=1000000
 setopt inc_append_history
 setopt share_history
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc'; fi
