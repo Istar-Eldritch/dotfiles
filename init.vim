@@ -25,6 +25,7 @@ Plug 'diepm/vim-rest-console'
 Plug 'elzr/vim-json'
 Plug 'metakirby5/codi.vim'
 Plug 'skielbasa/vim-material-monokai'
+Plug 'solarnz/thrift.vim'
 
 call plug#end()
 
@@ -46,9 +47,11 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set t_Co=256
 set background=dark
 colorscheme material-monokai
-let g:materialmonokai_subtle_spell=1
-let g:materialmonokai_custom_lint_indicators=0
+let g:materialmonokai_subtle_spell=0
+let g:materialmonokai_custom_lint_indicators=1
 let g:materialmonokai_italic=1
+
+set backupcopy=yes
 
 " Force transparency
 hi! Normal ctermbg=NONE guibg=NONE
@@ -110,6 +113,7 @@ nnoremap <Esc> :noh <CR>
 nnoremap <c-c> :so $MYVIMRC <CR>
 
 nnoremap <c-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " Buffer
 nnoremap <F8> :sbnext<CR>
@@ -172,6 +176,7 @@ let g:vrc_curl_opts = {
 " Rust & Racer
 let g:racer_cmd = "/home/istar/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-let g:rust_recommended_style = 0
+let g:rust_recommended_style = 1
+let g:rustfmt_autosave = 1
 
 imap <c-space> <c-x><c-o>
