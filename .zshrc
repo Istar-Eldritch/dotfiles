@@ -14,6 +14,8 @@ zplug "plugins/pass", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "rust-lang/cargo"
+zplug "Istar-Eldritch/dotfiles", use:completions/rustup
 zplug "rust-lang/zsh-config"
 zplug "potasiyam/cmder-zsh-theme", as:theme
 
@@ -52,7 +54,7 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 # Use vim as editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
@@ -66,8 +68,8 @@ export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export GPG_TTY=`tty`
 
@@ -89,11 +91,10 @@ function setupAWS() {
 ##
 # Kubernetes Specific
 ##
-# The next line updates PATH for the Google Cloud SDK. Kubernetes is part of it
-if [ -f '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/completion.zsh.inc'; fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc' ]; then source '/home/istar/.local/opt/google-cloud-sdk/path.zsh.inc'; fi
 
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
@@ -156,8 +157,7 @@ if [ $commands[docker] ]; then
   alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
   alias psql='drun postgres:9.5 psql'
   alias pg_dump='drun postgres:9.5 pg_dump'
-  alias pnode='docker exec -it pnode'
-  alias iris='pnode iris'
+
   export DOCKER_REGISTRY=registry.repositive.io:5000
   export DOCKER_REGISTRY_CREDENTIAL_PATH="repositive/registry"
   function registry() {
@@ -179,9 +179,14 @@ if [ $commands[exa] ]; then
   alias ls='exa -lh'
 fi
 
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 # History opts
 export HISTFILE=~/.histfile
 export SAVEHIST=1000000
 export HISTSIZE=1000000
 setopt inc_append_history
 setopt share_history
+
