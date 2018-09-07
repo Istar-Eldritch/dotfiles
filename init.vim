@@ -122,6 +122,12 @@ nnoremap <S-F8> :sbprevious<CR>
 " Ctrl-P
 nnoremap <c-P> <c-S> :CtrlPBuffer<CR>
 
+" Manage folds
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
 autocmd FileType typescript nnoremap <c-u> :echo tsuquyomi#hint()<CR>
 
 " Easy navigation through splits
