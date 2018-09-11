@@ -19,6 +19,7 @@ Plug 'mhartington/vim-typings'
 Plug 'shime/vim-livedown'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+Plug 'majutsushi/tagbar'
 Plug 'alunny/pegjs-vim'
 Plug 'nono/vim-handlebars'
 Plug 'diepm/vim-rest-console'
@@ -184,5 +185,7 @@ let g:racer_cmd = "/home/istar/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
+let g:rustfmt_command = "cargo +nightly fmt --"
 
 imap <c-space> <c-x><c-o>
+nmap <F8> :TagbarToggle<CR>
