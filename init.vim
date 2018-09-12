@@ -2,9 +2,9 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
@@ -14,9 +14,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-Plug 'Shougo/unite.vim'
-Plug 'mhartington/vim-typings'
-Plug 'shime/vim-livedown'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'majutsushi/tagbar'
@@ -24,9 +21,10 @@ Plug 'alunny/pegjs-vim'
 Plug 'nono/vim-handlebars'
 Plug 'diepm/vim-rest-console'
 Plug 'elzr/vim-json'
-Plug 'metakirby5/codi.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'Alok/notational-fzf-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'skielbasa/vim-material-monokai'
-Plug 'solarnz/thrift.vim'
 
 call plug#end()
 
@@ -82,8 +80,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='materialmonokai'
 
-" Automatically run markdown previews
-let g:livedown_autorun = 1
+" NV configuration
+source ~/dotfiles/nvim/nv.vim
 
 "if (empty($TMUX))
 "    if (has("nvim"))
@@ -116,14 +114,8 @@ nnoremap <c-c> :so $MYVIMRC <CR>
 nnoremap <c-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
-" Buffer
-nnoremap <F8> :sbnext<CR>
-nnoremap <S-F8> :sbprevious<CR>
-
-" Ctrl-P
-nnoremap <c-P> <c-S> :CtrlPBuffer<CR>
-
 " Manage folds
+set foldmethod=manual
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
