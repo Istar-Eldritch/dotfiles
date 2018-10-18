@@ -1,87 +1,104 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/nerdtree'
-Plug 'Yggdroot/indentLine'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'Shougo/vimproc.vim', {'do': 'make'}
-Plug 'w0rp/ale'
+" Navigation
+Plug 'MattesGroeger/vim-bookmarks' " Extended bookmarks
+Plug 'scrooloose/nerdtree' " File explorer
+Plug 'christoomey/vim-tmux-navigator' " Integration with TMUX
+
+" Cosmetic
+Plug 'vim-airline/vim-airline' " Status line styles
+Plug 'Yggdroot/indentLine' " Show indentation characters
+Plug 'ryanoasis/vim-devicons' " Nice icons for files and others
+Plug 'skielbasa/vim-material-monokai' " monokai color scheme
+
+" Typescript tools
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-Plug 'majutsushi/tagbar'
-Plug 'alunny/pegjs-vim'
-Plug 'nono/vim-handlebars'
-Plug 'diepm/vim-rest-console'
-Plug 'elzr/vim-json'
-Plug 'tpope/vim-eunuch'
-Plug 'Alok/notational-fzf-vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'skielbasa/vim-material-monokai'
+
+" Rust tools
+Plug 'rust-lang/rust.vim'  " The oficial rust vim plugin
+Plug 'racer-rust/vim-racer' " Autocomplete rust using racer
+Plug 'rhysd/rust-doc.vim'  " Shows rust docs
+
+" General coding tools
+Plug 'w0rp/ale' " Linter
+Plug 'Shougo/vimproc.vim', {'do': 'make'} " Required by w0rp
+Plug 'majutsushi/tagbar' " eTags navigator
+Plug 'diepm/vim-rest-console' " REST calls tool
+Plug 'elzr/vim-json'  " JSON syntax and goodies
+Plug 'airblade/vim-gitgutter' " Shows +/- on the editor based on g diff HEAD^
+Plug 'Xuyuanp/nerdtree-git-plugin' " Show git status in nerd-tree
+Plug 'tpope/vim-fugitive' " Overpowered git extensions and commands
+Plug 'tpope/vim-rhubarb' " Open browser pointing to code in Github project
+Plug 'dbgx/lldb.nvim' " lldb debugger integration
+
+Plug 'tpope/vim-eunuch' " General unix tools from vim
+
+" Writing and presentation Plugins (http://www.naperwrimo.org/wiki/index.php?title=Vim_for_Writers)
+Plug 'Alok/notational-fzf-vim' " Take notes and search across them
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Required by notational
+Plug 'reedes/vim-pencil'       " Super powered writing things
+Plug 'junegunn/limelight.vim'  " Highlights only active paragraph
+Plug 'reedes/vim-lexical'      " Lexicographical errors
+Plug 'reedes/vim-litecorrect'  " Better autocorrections
+Plug 'junegunn/goyo.vim'       " Spacing
+Plug 'godlygeek/tabular'       " Crate tables
+Plug 'plasticboy/vim-markdown' " Markdown
+Plug 'sotte/presenting.vim'    " Presentations
 
 call plug#end()
 
+filetype plugin indent on
+set backupcopy=yes
+set nocompatible
+set encoding=utf-8
 syntax on
 set number
 set ruler
-filetype plugin indent on
-
-set encoding=utf-8
+" No key scape time (https://www.johnhawthorn.com/2012/09/vi-escape-delays/)
+set timeoutlen=1000 ttimeoutlen=0
 "show existing tab with 2 spaces width
 set tabstop=2
  " when indenting with '>', use 2 spaces width
 set shiftwidth=2
  " On pressing tab, insert 2 spaces
 set expandtab
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" Styles
-set t_Co=256
-set background=dark
-colorscheme material-monokai
-let g:materialmonokai_subtle_spell=0
-let g:materialmonokai_custom_lint_indicators=1
-let g:materialmonokai_italic=1
+let g:vim_markdown_folding_disabled = 1
 
-set backupcopy=yes
+" Notational configuration
+" Bindings under ,nt
+source ~/dotfiles/vim/notational.vim
 
-" Force transparency
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
-hi! VertSplit ctermbg=NONE guibg=NONE
+" Rest console configuration
+" Bindings under ,rq
+source ~/dotfiles/vim/rest-console.vim
 
-hi! LineNr ctermbg=NONE guibg=NONE
-" Ale
-hi! ALEErrorSign ctermbg=NONE guibg=NONE
-hi! ALEWarningSign ctermbg=NONE guibg=NONE
-" GitGutter
-hi! GitGutterAdd ctermbg=NONE guibg=NONE
-hi! GitGutterChange ctermbg=NONE guibg=NONE
-hi! GitGutterDelete ctermbg=NONE guibg=NONE
-hi! GitGutterChangeDelete ctermbg=NONE guibg=NONE
+" Typescript specific configs
+source ~/dotfiles/vim/typescript.vim
 
-if has("termguicolors")     " set true colors
-    set t_8f=\[[38;2;%lu;%lu;%lum
-    set t_8b=\[[48;2;%lu;%lu;%lum
-    set termguicolors
-endif
+" Rust specific configs
+source ~/dotfiles/vim/rust.vim
 
-let g:indentLine_color_term = 24
-let g:indentLine_char = '·'
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='materialmonokai'
+" JSON tools
+source ~/dotfiles/vim/json.vim
 
-" NV configuration
-source ~/dotfiles/nvim/nv.vim
+" Buffer ergos
+source ~/dotfiles/vim/airline.vim
+
+" Navigation configs
+source ~/dotfiles/vim/navigation.vim
+
+" Writing configs
+source ~/dotfiles/vim/writing.vim
+
+" Cosmetic
+source ~/dotfiles/vim/cosmetic.vim
+
+" Cosmetic
+source ~/dotfiles/vim/presentation.vim
+
 
 "if (empty($TMUX))
 "    if (has("nvim"))
@@ -97,8 +114,6 @@ source ~/dotfiles/nvim/nv.vim
 
 let cwd = getcwd()
 
-" Show hidden files when searching with ctrlp
-let g:ctrlp_show_hidden = 1
 set shell=sh
 
 " Save and load sessions
@@ -111,73 +126,13 @@ nnoremap <Esc> :noh <CR>
 " Reload config
 nnoremap <c-c> :so $MYVIMRC <CR>
 
-nnoremap <c-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-
-" Manage folds
 set foldmethod=manual
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
-autocmd FileType typescript nnoremap <c-u> :echo tsuquyomi#hint()<CR>
-
-" Easy navigation through splits
-" nnoremap <c-j> <c-w>j
-" nnoremap <c-k> <c-w>k
-" nnoremap <c-h> <c-w>h
-" nnoremap <c-l> <c-w>l
-
-set statusline+=%#warningmsg#
-set statusline+=%{ALEGetStatusLine()}
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'rust': ['rls', 'cargo']}
-let g:ale_rust_rls_executable = "/usr/bin/rls"
-
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 1
-"
-"let g:tsuquyomi_disable_quickfix = 1
-"let g:syntastic_typescript_checkers = ['tsuquyomi']
-"let g:syntastic_typescript_tsc_args = ''
-"let g:syntastic_typescript_tsc_fname = ''
-com! FormatJSON %!js-beautify -s 2
-
-" No key scape time
-set timeoutlen=1000 ttimeoutlen=0
-
-" VIM-REST-CONSOLE (#2975)
-" Allow GET requests to have body
-"   note: vrc_split_request_body is ignored (= 0) when this is set (= 1)
-let g:vrc_allow_get_request_body = 1
-" Enable automatic formatting of the response
-let g:vrc_auto_format_response_enabled = 1
-" Include response header
-" let g:vrc_include_response_header = 1
-" Print executed curl command
-let g:vrc_show_command = 0
-" Set trigger key (<C-j> by default)
-let g:vrc_trigger = ',,sr'
-
-let g:vrc_curl_opts = {
-  \ '-s': '',
-  \ '-S': ''
-\}
-
-" Rust & Racer
-let g:racer_cmd = "/home/istar/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-let g:rust_recommended_style = 1
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = "cargo +nightly fmt --"
-
+" Ctrl-Space for autocompletion
 imap <c-space> <c-x><c-o>
+" Show the eTag navigator
 nmap <F8> :TagbarToggle<CR>
