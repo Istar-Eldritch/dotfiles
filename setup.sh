@@ -6,7 +6,7 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 
 # SETUP PLUGIN LOADERS
 echo DOWNLOADING/UPDATING dependencies
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+curl -fLo $XDG_CONFIG_HOME/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 if [ ! -d $HOME/.tmux/plugins/tpm/.git ]
@@ -39,14 +39,14 @@ ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
 rm -fr ~/.gitignore_global
 ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
 
+rm -fr $XDG_CONFIG_HOME/i3
+ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
+
 rm -fr $HOME/.xinitrc
 ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
 
 rm -fr $HOME/.xbindkeysrc
 ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc
-
-rm -fr $HOME/.local/bin
-ln -s $CURRENT_DIR/bin $HOME/.local/bin
 
 rm -fr $HOME/.npmrc
 ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
