@@ -89,6 +89,10 @@
   "xbacklight -dec 10"
     XF86MonBrightnessDown
 
+# Stop Playing music
+  "sp play"
+    XF86AudioPlay
+
 # Take screenshot
   "import ""$(date +"%d-%m_%H:%m:%S").png""
     XF86Display
