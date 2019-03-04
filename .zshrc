@@ -74,21 +74,6 @@ source /usr/share/nvm/install-nvm-exec
 export GPG_TTY=`tty`
 
 ##
-# AWS Credentials
-##
-
-function setupAWS() {
-  if [ "$1" = "--unset" ]
-  then
-    unset AWS_ACCESS_KEY
-    unset AWS_SECRET_ACCESS_KEY
-  else
-    export AWS_ACCESS_KEY=$(pass show repositive/aws/access)
-    export AWS_SECRET_ACCESS_KEY=$(pass show repositive/aws/secret)
-  fi
-}
-
-##
 # Kubernetes Specific
 ##
 # The next line enables shell command completion for gcloud.
@@ -117,23 +102,6 @@ if [ $commands[kubectl] ]; then
 
 fi
 
-##
-# Docker & Docker Machine Specific
-##
-
-if [ $commands[docker-machine] ]; then
-  function dme() {
-    if [ "$1" != "" ]
-    then
-       setupAWS
-       eval $(docker-machine env "$1");
-    else
-      setupAWS --unset
-      eval $(docker-machine env --unset);
-    fi
-  }
-fi
-
 if [[ $TERM = dumb ]]; then
   unset zle_bracketed_paste
 fi
@@ -146,17 +114,9 @@ alias clip='xclip -sel clip'
 
 alias pubip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 
-if [ $commands[emacs] ]; then
-  function ems() {
-    emacsclient -nw $1 || (emacs --daemon && ems $1)
-  }
-fi
-
 if [ $commands[docker] ]; then
   alias dmem='docker stats $(docker ps --format={{.Names}})'
-  alias drun='docker run -it --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
-  alias psql='drun postgres:9.5 psql'
-  alias pg_dump='drun postgres:9.5 pg_dump'
+  alias drun='docker run -it -u $UID --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
 
   export DOCKER_REGISTRY=registry.repositive.io:5000
   export DOCKER_REGISTRY_CREDENTIAL_PATH="repositive/registry"
@@ -187,6 +147,11 @@ fi
 export HISTFILE=~/.histfile
 export SAVEHIST=1000000
 export HISTSIZE=1000000
+export UID=$UID
 setopt inc_append_history
 setopt share_history
 
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# [ -f ~/emsdk-portable/emsdk_env.sh ] && source ~/emsdk-portable/emsdk_env.sh
