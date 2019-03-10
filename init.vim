@@ -1,6 +1,9 @@
 
 call plug#begin('~/.vim/plugged')
 
+" Statistics
+Plug 'wakatime/vim-wakatime' " https://wakatime.com/vim
+
 " Navigation
 Plug 'MattesGroeger/vim-bookmarks' " Extended bookmarks
 Plug 'scrooloose/nerdtree' " File explorer
