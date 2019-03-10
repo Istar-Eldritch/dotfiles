@@ -13,12 +13,12 @@ let g:vrc_show_command = 0
 let g:vrc_trigger = '<leader>rq'
 
 let g:vrc_curl_opts = {
-  \ '--connect-timeout' : 10,
+  \ '--connect-timeout' : 5,
   \ '-b': '/path/to/cookie',
   \ '-c': '/path/to/cookie',
   \ '-L': '',
   \ '-i': '',
-  \ '--max-time': 10,
+  \ '--max-time': 5,
   \ '--ipv4': '',
   \ '-k': '',
   \ '-s': '',
