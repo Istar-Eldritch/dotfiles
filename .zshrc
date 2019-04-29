@@ -61,7 +61,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 export PATH=$PATH:~/.local/bin:~/.cargo/bin
 
 # Rust
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+if [ $commands[rustc] ]; then
+  export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+fi
 
 # NVM ON Linux
 export NVM_DIR="$HOME/.nvm"
