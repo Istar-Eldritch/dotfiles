@@ -166,4 +166,12 @@ else
   # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
   # [ -f ~/emsdk-portable/emsdk_env.sh ] && source ~/emsdk-portable/emsdk_env.sh
+
+  # Detect if we are running on WSL
+  # If so, docker should connect to the host daemon
+  if grep -q Microsoft /proc/version; then
+    export DOCKER_HOST=tcp://localhost:2375
+    export COMPOSE_CONVERT_WINDOWS_PATHS=true
+    # export COMPOSE_FORCE_WINDOWS_HOST=true
+  fi
 fi
