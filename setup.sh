@@ -18,25 +18,36 @@ else
 
 fi
 
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+if [ ! -d $HOME/.zplug ]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+fi
 
 echo PLUGIN LOADERS UPDATED
 
+mkdir -p $HOME/.vim
+
 # LINK CONFIGURATIONS
 echo LINKING CONFIGURATIONS...
-rm -fr ~/.tmux.conf
+
+rm -fr $HOME/.vim/custom_cfg
+ln -s $CURRENT_DIR/vim $HOME/.vim/custom_cfg
+
+rm -fr $HOME/.vim/thesaurus
+ln -s $CURRENT_DIR/thesaurus $HOME/.vim/thesaurus
+
+rm -fr $HOME/.tmux.conf
 ln -s $CURRENT_DIR/.tmux.conf $HOME/.tmux.conf
 
-rm -fr ~/.zshrc
+rm -fr $HOME/.zshrc
 ln -s $CURRENT_DIR/.zshrc $HOME/.zshrc
 
 rm -fr $XDG_CONFIG_HOME/nvim/init.vim
 ln -s $CURRENT_DIR/init.vim $XDG_CONFIG_HOME/nvim/init.vim
 
-rm -fr ~/.gitconfig
+rm -fr $HOME/.gitconfig
 ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
 
-rm -fr ~/.gitignore_global
+rm -fr $HOME/.gitignore_global
 ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
 
 rm -fr $XDG_CONFIG_HOME/i3

@@ -72,35 +72,35 @@ let g:vim_markdown_folding_disabled = 1
 
 " Notational configuration
 " Bindings under ,nt
-source ~/dotfiles/vim/notational.vim
+source ~/.vim/custom_cfg/notational.vim
 
 " Rest console configuration
 " Bindings under ,rq
-source ~/dotfiles/vim/rest-console.vim
+source ~/.vim/custom_cfg/rest-console.vim
 
 " Typescript specific configs
-source ~/dotfiles/vim/typescript.vim
+source ~/.vim/custom_cfg/typescript.vim
 
 " Rust specific configs
-source ~/dotfiles/vim/rust.vim
+source ~/.vim/custom_cfg/rust.vim
 
 " JSON tools
-source ~/dotfiles/vim/json.vim
+source ~/.vim/custom_cfg/json.vim
 
 " Buffer ergos
-source ~/dotfiles/vim/airline.vim
+source ~/.vim/custom_cfg/airline.vim
 
 " Navigation configs
-source ~/dotfiles/vim/navigation.vim
+source ~/.vim/custom_cfg/navigation.vim
 
 " Writing configs
-source ~/dotfiles/vim/writing.vim
+source ~/.vim/custom_cfg/writing.vim
 
 " Cosmetic
-source ~/dotfiles/vim/cosmetic.vim
+source ~/.vim/custom_cfg/cosmetic.vim
 
 " Cosmetic
-source ~/dotfiles/vim/presentation.vim
+source ~/.vim/custom_cfg/presentation.vim
 
 
 "if (empty($TMUX))
