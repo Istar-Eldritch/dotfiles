@@ -124,14 +124,6 @@ else
   if [ $commands[docker] ]; then
     alias dmem='docker stats $(docker ps --format={{.Names}})'
     alias drun='docker run -it -u $UID --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
-
-    # Detect if we are running on WSL
-    # If so, docker should connect to the host daemon
-    if grep -q Microsoft /proc/version; then
-      export DOCKER_HOST=tcp://localhost:2375
-      export COMPOSE_CONVERT_WINDOWS_PATHS=true
-      # export COMPOSE_FORCE_WINDOWS_HOST=true
-    fi
   fi
 
   if which ruby >/dev/null && which gem >/dev/null; then
@@ -154,4 +146,14 @@ else
   # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
   # [ -f ~/emsdk-portable/emsdk_env.sh ] && source ~/emsdk-portable/emsdk_env.sh
+
+  # Detect if we are running on WSL
+  # If so, docker should connect to the host daemon
+  if grep -q Microsoft /proc/version; then
+    export DOCKER_HOST=tcp://localhost:2375
+    export COMPOSE_CONVERT_WINDOWS_PATHS=true
+    # export COMPOSE_FORCE_WINDOWS_HOST=true
+
+    export DISPLAY=localhost:0.0
+  fi
 fi
