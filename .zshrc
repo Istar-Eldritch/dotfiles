@@ -125,25 +125,13 @@ else
     alias dmem='docker stats $(docker ps --format={{.Names}})'
     alias drun='docker run -it -u $UID --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
 
-    export DOCKER_REGISTRY=registry.repositive.io:5000
-    export DOCKER_REGISTRY_CREDENTIAL_PATH="repositive/registry"
-    function registry() {
-      AUTH_HEADER="Authorization: Basic $(printf "$(pass $DOCKER_REGISTRY_CREDENTIAL_PATH/user):$(pass $DOCKER_REGISTRY_CREDENTIAL_PATH/password)" | base64)"
-      if [ "$1" == "catalog" ]; then
-        curl -H $AUTH_HEADER https://$DOCKER_REGISTRY/v2/_catalog
-      elif [ "$1" == "tags" ]; then
-        curl -H $AUTH_HEADER https://$DOCKER_REGISTRY/v2/$2/tags/list
-      fi
-    }
-  fi
-
-  if [ $commands[docker-compose] ]; then
-    alias dc='docker-compose'
-    alias dcu='dc up'
-  fi
-
-  if [ $commands[exa] ]; then
-    alias ls='exa -lh'
+    # Detect if we are running on WSL
+    # If so, docker should connect to the host daemon
+    if grep -q Microsoft /proc/version; then
+      export DOCKER_HOST=tcp://localhost:2375
+      export COMPOSE_CONVERT_WINDOWS_PATHS=true
+      # export COMPOSE_FORCE_WINDOWS_HOST=true
+    fi
   fi
 
   if which ruby >/dev/null && which gem >/dev/null; then
@@ -166,12 +154,4 @@ else
   # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
   # [ -f ~/emsdk-portable/emsdk_env.sh ] && source ~/emsdk-portable/emsdk_env.sh
-
-  # Detect if we are running on WSL
-  # If so, docker should connect to the host daemon
-  if grep -q Microsoft /proc/version; then
-    export DOCKER_HOST=tcp://localhost:2375
-    export COMPOSE_CONVERT_WINDOWS_PATHS=true
-    # export COMPOSE_FORCE_WINDOWS_HOST=true
-  fi
 fi
