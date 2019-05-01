@@ -147,13 +147,14 @@ else
 
   # [ -f ~/emsdk-portable/emsdk_env.sh ] && source ~/emsdk-portable/emsdk_env.sh
 
-  # Detect if we are running on WSL
-  # If so, docker should connect to the host daemon
   if grep -q Microsoft /proc/version; then
+    # Detect if we are running on WSL
+    # If so, docker should connect to the host daemon
     export DOCKER_HOST=tcp://localhost:2375
     export COMPOSE_CONVERT_WINDOWS_PATHS=true
     # export COMPOSE_FORCE_WINDOWS_HOST=true
 
+    # Necesary to setup a display to use the X server running in the host machine.
     export DISPLAY=localhost:0.0
   fi
 fi
