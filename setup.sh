@@ -62,4 +62,9 @@ ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc
 rm -fr $HOME/.npmrc
 ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
 
+mkdir -p $HOME/.config/alacritty
+
+rm -fr $HOME/.config/alacritty/alacritty.yml
+ln -s $CURRENT_DIR/alacritty.yml $HOME/alacritty/alcritty.yml
+
 echo CONFIGURATIONS LINKED.
