@@ -10,5 +10,5 @@ let g:rustfmt_command = "rustup run nightly rustfmt"
 let g:ale_rust_cargo_check_tests = 1
 let g:ale_rust_cargo_check_examples = 1
 let g:ale_linters = {'rust': ['rls', 'cargo']}
-let g:ale_rust_rls_executable = "/usr/bin/rls"
+let g:ale_rust_rls_executable = "/home/istar/.cargo/bin/rls"
 
