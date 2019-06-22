@@ -516,7 +516,7 @@ key_bindings:
   - { key: Add,      mods: Control,       action: IncreaseFontSize }
   - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  - { key: F11,      mods: None,          action: ToggleFullscreen }
+  # - { key: F11,      mods: None,          action: ToggleFullscreen }
 
  
   # (macOS only)
