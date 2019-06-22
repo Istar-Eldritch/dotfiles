@@ -62,9 +62,13 @@ ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc
 rm -fr $HOME/.npmrc
 ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
 
-mkdir -p $HOME/.config/alacritty
+rm -fr $HOME/.compton.conf
+ln -s $CURRENT_DIR/.compton.conf $HOME/.compton.conf
 
-rm -fr $HOME/.config/alacritty/alacritty.yml
-ln -s $CURRENT_DIR/alacritty.yml $HOME/alacritty/alcritty.yml
+
+mkdir -p $XDG_CONFIG_HOME/alacritty
+
+rm -fr $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -s $CURRENT_DIR/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 
 echo CONFIGURATIONS LINKED.
