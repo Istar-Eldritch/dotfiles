@@ -55,11 +55,11 @@ ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
 rm -fr $HOME/.gitignore_global
 ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
 
-rm -fr $XDG_CONFIG_HOME/i3
-ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
+# rm -fr $XDG_CONFIG_HOME/i3
+# ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
 
-rm -fr $HOME/.xinitrc
-ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
+# rm -fr $HOME/.xinitrc
+# ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
 
 rm -fr $HOME/.xbindkeysrc
 ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc
@@ -70,6 +70,11 @@ ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
 rm -fr $HOME/.compton.conf
 ln -s $CURRENT_DIR/.compton.conf $HOME/.compton.conf
 
+rm -fr $HOME/.local/share/applications/alacritty.desktop
+rm -fr $HOME/.local/share/applications/alacritty.svg
+
+ln -s $CURRENT_DIR/alacritty.desktop $HOME/.local/share/applications/alacritty.desktop
+ln -s $CURRENT_DIR/alacritty.svg $HOME/.local/share/applications/alacritty.svg
 
 mkdir -p $XDG_CONFIG_HOME/alacritty
 
