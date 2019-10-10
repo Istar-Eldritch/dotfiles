@@ -3,16 +3,6 @@
 # Bail out the script on error
 set -e
 
-sudo apt-get update
-
-# Install packages to allow apt to use a repository over HTTPS:
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common
-
 # Add docker gpg key
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 

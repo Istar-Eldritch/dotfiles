@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+set -e
+
+./install_software.sh
+
 CURRENT_DIR=`pwd -P`
 
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
