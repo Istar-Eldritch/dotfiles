@@ -17,6 +17,8 @@ sudo apt install -y \
     libfontconfig1-dev \
     libxcb-xfixes0-dev \
     python3 \
+    wl-clipboard \
+    openjdk-13-jdk \
     pass \
     zsh \
     tmux \
