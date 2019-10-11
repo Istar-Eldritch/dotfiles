@@ -15,7 +15,7 @@ sudo add-apt-repository \
 sudo apt-get update
 
 # Install docker cli and engine
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
 
 # Add the current shell user to the docker user group
 sudo usermod -aG docker $USER
