@@ -30,3 +30,5 @@ sudo apt install -y \
 ./install_nodejs.sh
 
 ./install_python.sh
+
+./install_spotify.sh
