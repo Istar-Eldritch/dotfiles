@@ -141,7 +141,10 @@ else
   # These are used in some specific situations but do not harm the system if added in general.
   export UID=$UID # Helps with docker_files, allows to use UID as env
   export GPG_TTY=$(tty) # gpg doesn't work in some environments without this env (WSL)
+  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
   export EDITOR='nvim' # Use neovim as editor
+
+  gpgconf --launch gpg-agent
 
   # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -157,4 +160,5 @@ else
     # Necesary to setup a display to use the X server running in the host machine.
     export DISPLAY=localhost:0.0
   fi
+
 fi
