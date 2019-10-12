@@ -19,6 +19,12 @@ sudo apt install -y \
     python3 \
     wl-clipboard \
     openjdk-13-jdk \
+    build-essential \
+    default-libmysqlclient-dev \
+    default-mysql-client \
+    apt-file \
+    mlocate \
+    gnome-tweak-tool \
     pass \
     zsh \
     tmux \
