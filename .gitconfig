@@ -17,7 +17,7 @@
   rec = !git checkout $(git rev-list -n 1 HEAD -- $1) -- $1
   staash = stash --include-untracked
   staaash = stash --all
-
+  hash = rev-parse --short HEAD
 [color]
 	ui = true
 [push]
