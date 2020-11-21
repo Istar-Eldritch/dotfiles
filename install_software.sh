@@ -4,6 +4,9 @@ set -e
 sudo apt update
 
 sudo apt install -y \
+    i3 \
+    rofi \
+    compton \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -28,7 +31,7 @@ sudo apt install -y \
     zsh \
     tmux \
     ripgrep \
-    chromium
+    firefox-esr
 
 ./install_docker.sh
 
@@ -38,4 +41,3 @@ sudo apt install -y \
 
 ./install_python.sh
 
-./install_spotify.sh
