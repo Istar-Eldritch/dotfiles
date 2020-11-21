@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Encoding=UTF-8
-Name=Alacritty
-Comment=Alacritty Terminal
-Icon=/home/istar/.local/share/applications/alacritty.svg
-Exec=/home/istar/.local/bin/alacritty
-Terminal=false
-Categories=Tags;Describing;Application
