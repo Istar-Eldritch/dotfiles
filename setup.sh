@@ -55,11 +55,11 @@ ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
 rm -fr $HOME/.gitignore_global
 ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
 
-# rm -fr $XDG_CONFIG_HOME/i3
-# ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
+rm -fr $XDG_CONFIG_HOME/i3
+ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
 
-# rm -fr $HOME/.xinitrc
-# ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
+rm -fr $HOME/.xinitrc
+ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
 
 rm -fr $HOME/.xbindkeysrc
 ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc

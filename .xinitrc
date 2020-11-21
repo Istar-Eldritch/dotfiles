@@ -6,3 +6,4 @@ compton &
 rescuetime &
 # exec gnome-session
 exec i3
+# exec dbus-launch leftwm
