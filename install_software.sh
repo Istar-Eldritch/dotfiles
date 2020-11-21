@@ -18,7 +18,6 @@ sudo apt install -y \
     libxcb-xfixes0-dev \
     python3 \
     wl-clipboard \
-    openjdk-13-jdk \
     build-essential \
     default-libmysqlclient-dev \
     default-mysql-client \
