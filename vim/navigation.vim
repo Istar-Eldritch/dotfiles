@@ -1,5 +1,3 @@
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
 nnoremap <c-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 

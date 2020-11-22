@@ -10,24 +10,23 @@ Plug 'scrooloose/nerdtree' " File explorer
 Plug 'christoomey/vim-tmux-navigator' " Integration with TMUX
 
 " Cosmetic
-Plug 'vim-airline/vim-airline' " Status line styles
+" Plug 'vim-airline/vim-airline' " Status line styles
 Plug 'Yggdroot/indentLine' " Show indentation characters
-Plug 'ryanoasis/vim-devicons' " Nice icons for files and others
+" Plug 'ryanoasis/vim-devicons' " Nice icons for files and others
 Plug 'skielbasa/vim-material-monokai' " monokai color scheme
 
 " Typescript tools
-Plug 'Quramy/tsuquyomi'
-Plug 'leafgarland/typescript-vim'
-
-" Rust tools
-Plug 'rust-lang/rust.vim'  " The oficial rust vim plugin
-Plug 'racer-rust/vim-racer' " Autocomplete rust using racer
-Plug 'rhysd/rust-doc.vim'  " Shows rust docs
+" Plug 'Quramy/tsuquyomi'
+" Plug 'leafgarland/typescript-vim'
 
 " General coding tools
-Plug 'w0rp/ale' " Linter
-Plug 'Shougo/vimproc.vim', {'do': 'make'} " Required by w0rp
+Plug 'neovim/nvim-lspconfig'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-lsp'
+Plug 'ervandew/supertab'
+Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar' " eTags navigator
+
 Plug 'diepm/vim-rest-console' " REST calls tool
 Plug 'elzr/vim-json'  " JSON syntax and goodies
 Plug 'airblade/vim-gitgutter' " Shows +/- on the editor based on g diff HEAD^
@@ -38,17 +37,7 @@ Plug 'dbgx/lldb.nvim' " lldb debugger integration
 
 Plug 'tpope/vim-eunuch' " General unix tools from vim
 
-" Writing and presentation Plugins (http://www.naperwrimo.org/wiki/index.php?title=Vim_for_Writers)
-Plug 'Alok/notational-fzf-vim' " Take notes and search across them
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Required by notational
-Plug 'reedes/vim-pencil'       " Super powered writing things
-Plug 'junegunn/limelight.vim'  " Highlights only active paragraph
-Plug 'reedes/vim-lexical'      " Lexicographical errors
-Plug 'reedes/vim-litecorrect'  " Better autocorrections
-Plug 'junegunn/goyo.vim'       " Spacing
-Plug 'godlygeek/tabular'       " Crate tables
 Plug 'plasticboy/vim-markdown' " Markdown
-Plug 'sotte/presenting.vim'    " Presentations
 
 call plug#end()
 
@@ -70,25 +59,24 @@ set expandtab
 
 let g:vim_markdown_folding_disabled = 1
 
-" Notational configuration
-" Bindings under ,nt
-source ~/.vim/custom_cfg/notational.vim
+" Enable deoplete autocompletion
+let g:deoplete#enable_at_startup = 1
+
+" customise deoplete maximum candidate window length
+call deoplete#custom#source('_', 'max_menu_width', 80)
+
+" Press Tab to scroll _down_ a list of auto-completions
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Rest console configuration
 " Bindings under ,rq
 source ~/.vim/custom_cfg/rest-console.vim
-
-" Typescript specific configs
-source ~/.vim/custom_cfg/typescript.vim
 
 " Rust specific configs
 source ~/.vim/custom_cfg/rust.vim
 
 " JSON tools
 source ~/.vim/custom_cfg/json.vim
-
-" Buffer ergos
-source ~/.vim/custom_cfg/airline.vim
 
 " Navigation configs
 source ~/.vim/custom_cfg/navigation.vim
@@ -98,9 +86,6 @@ source ~/.vim/custom_cfg/writing.vim
 
 " Cosmetic
 source ~/.vim/custom_cfg/cosmetic.vim
-
-" Cosmetic
-source ~/.vim/custom_cfg/presentation.vim
 
 
 "if (empty($TMUX))

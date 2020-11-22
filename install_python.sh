@@ -8,4 +8,4 @@ sudo apt install -y \
     python3-dev \
     python3-venv
 
-pip3 install --upgrade setuptools wheel
+pip3 install --upgrade setuptools wheel pynvim

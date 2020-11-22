@@ -28,15 +28,6 @@ if has("termguicolors")     " set true colors
     set termguicolors
 endif
 
-
-set laststatus=2
-set statusline+=%#warningmsg#
-set statusline+=%{ALEGetStatusLine()}
-set statusline+=%*
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-
 let g:indentLine_color_term = 24
 let g:indentLine_char = '·'
 

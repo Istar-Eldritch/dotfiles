@@ -7,6 +7,7 @@ sudo apt install -y \
     i3 \
     rofi \
     compton \
+    neovim \
     apt-transport-https \
     ca-certificates \
     curl \
