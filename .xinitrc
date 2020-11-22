@@ -1,10 +1,9 @@
 
 # setup_dp_screen
-xbindkeys
-# feh --bg-fill ~/wallpaper.png &
+xbindkeys &
+feh --bg-fill ~/wallpaper.jpg &
 compton &
 rescuetime &
 ibus-daemon &
-# exec gnome-session
+xrandr --output HDMI-0 --left-of DVI-D-0 &
 exec i3
-# exec dbus-launch leftwm
