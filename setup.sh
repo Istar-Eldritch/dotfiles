@@ -3,7 +3,7 @@
 
 set -e
 
-./install_software.sh
+# ./install_software.sh
 
 CURRENT_DIR=`pwd -P`
 
@@ -69,12 +69,6 @@ ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
 
 rm -fr $HOME/.compton.conf
 ln -s $CURRENT_DIR/.compton.conf $HOME/.compton.conf
-
-rm -fr $HOME/.local/share/applications/alacritty.desktop
-rm -fr $HOME/.local/share/applications/alacritty.svg
-
-ln -s $CURRENT_DIR/alacritty.desktop $HOME/.local/share/applications/alacritty.desktop
-ln -s $CURRENT_DIR/alacritty.svg $HOME/.local/share/applications/alacritty.svg
 
 mkdir -p $XDG_CONFIG_HOME/alacritty
 

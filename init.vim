@@ -8,6 +8,7 @@ Plug 'wakatime/vim-wakatime' " https://wakatime.com/vim
 Plug 'MattesGroeger/vim-bookmarks' " Extended bookmarks
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'christoomey/vim-tmux-navigator' " Integration with TMUX
+Plug 'ctrlpvim/ctrlp.vim' "Ctrl-P
 
 " Cosmetic
 " Plug 'vim-airline/vim-airline' " Status line styles
@@ -43,6 +44,7 @@ call plug#end()
 
 filetype plugin indent on
 set backupcopy=yes
+set nofixendofline
 set nocompatible
 set encoding=utf-8
 syntax on
