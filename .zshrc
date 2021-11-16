@@ -61,10 +61,11 @@ else
 
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
+  PATH=$PATH:~/.local/bin
   # Rust
   if [ $commands[rustc] ]; then
     export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-    export PATH=$PATH:~/.local/bin:~/.cargo/bin
+    export PATH=$PATH:~/.cargo/bin
   fi
 
   # nvm_start=`date +%s.%N`
