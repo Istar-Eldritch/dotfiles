@@ -1,6 +1,6 @@
 # Run tmux when new terminal is created
 if [ "$TERM" != "screen-256color" ]; then
-  exec tmux attach
+    #exec tmux attach
 else
   # zplug_start=`date +%s.%N`
   # Plugin Manager
@@ -77,6 +77,9 @@ else
   nvm_end=`date +%s.%N`
   # echo "NVM Time: $((nvm_end-nvm_start))"
 
+  export NPM_TOKEN="$(pass elephant/npm)"
+  export YARN_NPM_AUTH_TOKEN="${NPM_TOKEN}"
+
   # gcloud_start=`date +%s.%N`
   ##
   # Kubernetes Specific
@@ -106,6 +109,12 @@ else
     #   fi
     # }
 
+  fi
+
+  # configure aws sso for elephant healthcare (my employer)
+  if [ $commands[aws] ]; then
+    export AWS_PROFILE=ele-main
+    export AWS_PROFILE=ele-main-admin
   fi
   # gcloud_end=`date +%s.%N`
   # echo "Gcloud Time: $((gcloud_end-gcloud_start))"
