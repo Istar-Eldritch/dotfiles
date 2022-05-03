@@ -9,6 +9,10 @@ Plug 'MattesGroeger/vim-bookmarks' " Extended bookmarks
 Plug 'scrooloose/nerdtree' " File explorer
 Plug 'christoomey/vim-tmux-navigator' " Integration with TMUX
 Plug 'ctrlpvim/ctrlp.vim' "Ctrl-P
+Plug 'dyng/ctrlsf.vim' "Ctrl-SF
+
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim' "Allows opening buffers in github
 
 " Cosmetic
 " Plug 'vim-airline/vim-airline' " Status line styles

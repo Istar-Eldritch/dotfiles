@@ -76,6 +76,16 @@ else
   # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   nvm_end=`date +%s.%N`
   # echo "NVM Time: $((nvm_end-nvm_start))"
+  #
+  function elephant_npm() {
+    export NPM_TOKEN="$(pass elephant/npm)"
+    export YARN_NPM_AUTH_TOKEN="${NPM_TOKEN}"
+  }
+
+  function elephant_aws() {
+    export AWS_PROFILE="ele-main"
+    aws sso login
+  }
 
   export NPM_TOKEN="$(pass elephant/npm)"
   export YARN_NPM_AUTH_TOKEN="${NPM_TOKEN}"
