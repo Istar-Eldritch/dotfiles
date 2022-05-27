@@ -77,14 +77,37 @@ else
   nvm_end=`date +%s.%N`
   # echo "NVM Time: $((nvm_end-nvm_start))"
   #
+  
+
+  if [ $commands[pyenv] ]; then
+    # PyEnv
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+  fi
+
+
   function elephant_npm() {
     export NPM_TOKEN="$(pass elephant/npm)"
     export YARN_NPM_AUTH_TOKEN="${NPM_TOKEN}"
   }
 
   function elephant_aws() {
-    export AWS_PROFILE="ele-main"
-    aws sso login
+    export AWS_PROFILE=$1
+    BROWSER="firefox -P Elephant" aws sso login
+  }
+
+  function elephant_aws_envs() {
+    AWS_PROFILE=$1
+    ACCESS_TOKEN=$(cat ~/.aws/sso/cache/$(ls ~/.aws/sso/cache/ | head -1) | jq .accessToken | tr -d \")
+    aws sso get-role-credentials --account-id $(aws configure get sso_account_id) --role-name $(aws configure get sso_role_name)  --access-token $ACCESS_TOKEN --region $(aws configure get region) > ~/.aws/credentials.json
+    AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials.json | jq .roleCredentials.accessKeyId | tr -d \")
+    AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials.json | jq .roleCredentials.secretAccessKey | tr -d \")
+  }
+
+  function elephant_graphql() {
+    export APOLLO_KEY=$(pass elephant/graphql_api_key)
+    export APOLLO_ENGINE_KEY=$APOLLO_KEY
   }
 
   export NPM_TOKEN="$(pass elephant/npm)"
@@ -140,6 +163,23 @@ else
   alias clip='xclip -sel clip'
 
   alias pubip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+
+  # Kills any process with the given name 
+  function kill-process() {
+    ps -u $(whoami) | rg "$1" | awk '{print $1}' | xargs kill -9 2> /dev/null
+  }
+
+
+  # Kills any process with the provided name using a port
+  function kill-net-process() {
+    lsof -n 2> /dev/null | rg LISTEN | rg "$1" | awk '{print $2}' | xargs kill -9 2> /dev/null
+  }
+
+  # kills any process using the specified port
+  function kill-port() {
+    lsof -n 2> /dev/null | rg "$1" | rg node | awk '{print $2}' | xargs kill -9 2> /dev/null
+  }
+
 
   if [ $commands[docker] ]; then
     alias dmem='docker stats $(docker ps --format={{.Names}})'
