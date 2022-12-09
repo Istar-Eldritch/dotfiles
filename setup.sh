@@ -31,6 +31,9 @@ echo PLUGIN LOADERS UPDATED
 
 mkdir -p $HOME/.vim
 
+mkdir -p $HOME/.local
+mkdir -p $HOME/.local/bin
+
 # LINK CONFIGURATIONS
 echo LINKING CONFIGURATIONS...
 
@@ -55,24 +58,34 @@ ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
 rm -fr $HOME/.gitignore_global
 ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
 
-rm -fr $XDG_CONFIG_HOME/i3
-ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
-
-rm -fr $HOME/.xinitrc
-ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
-
-rm -fr $HOME/.xbindkeysrc
-ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc
-
 rm -fr $HOME/.npmrc
 ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
 
-rm -fr $HOME/.compton.conf
-ln -s $CURRENT_DIR/.compton.conf $HOME/.compton.conf
-
 mkdir -p $XDG_CONFIG_HOME/alacritty
-
 rm -fr $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -s $CURRENT_DIR/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+
+
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  
+  rm -fr $XDG_CONFIG_HOME/i3
+  ln -s $CURRENT_DIR/i3 $XDG_CONFIG_HOME/i3
+  
+  rm -fr $HOME/.xinitrc
+  ln -s $CURRENT_DIR/.xinitrc $HOME/.xinitrc
+  
+  rm -fr $HOME/.xbindkeysrc
+  ln -s $CURRENT_DIR/.xbindkeysrc $HOME/.xbindkeysrc
+  
+  rm -fr $HOME/.compton.conf
+  ln -s $CURRENT_DIR/.compton.conf $HOME/.compton.conf
+
+  rm -fr $HOME/.local/bin/pbcopy
+  ln -s $CURRENT_DIR/bin/pbcopy.sh $HOME/.local/bin/pbcopy
+
+elif [ "$(uname)" == "Darwin" ]; then
+  rm -fr $HOME/.local/bin/vpn
+  ln -s $CURRENT_DIR/bin/vpn.sh $HOME/.local/bin/vpn
+fi
 
 echo CONFIGURATIONS LINKED.
