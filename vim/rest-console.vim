@@ -14,8 +14,6 @@ let g:vrc_trigger = '<leader>rq'
 
 let g:vrc_curl_opts = {
   \ '--connect-timeout' : 5,
-  \ '-b': '/path/to/cookie',
-  \ '-c': '/path/to/cookie',
   \ '-L': '',
   \ '-i': '',
   \ '--max-time': 5,

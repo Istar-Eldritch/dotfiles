@@ -84,34 +84,8 @@ else
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+    pyenv global 3.10.6
   fi
-
-
-  function elephant_npm() {
-    export NPM_TOKEN="$(pass elephant/npm)"
-    export YARN_NPM_AUTH_TOKEN="${NPM_TOKEN}"
-  }
-
-  function elephant_aws() {
-    export AWS_PROFILE=$1
-    BROWSER="firefox -P Elephant" aws sso login
-  }
-
-  function elephant_aws_envs() {
-    AWS_PROFILE=$1
-    ACCESS_TOKEN=$(cat ~/.aws/sso/cache/$(ls ~/.aws/sso/cache/ | head -1) | jq .accessToken | tr -d \")
-    aws sso get-role-credentials --account-id $(aws configure get sso_account_id) --role-name $(aws configure get sso_role_name)  --access-token $ACCESS_TOKEN --region $(aws configure get region) > ~/.aws/credentials.json
-    AWS_ACCESS_KEY_ID=$(cat ~/.aws/credentials.json | jq .roleCredentials.accessKeyId | tr -d \")
-    AWS_SECRET_ACCESS_KEY=$(cat ~/.aws/credentials.json | jq .roleCredentials.secretAccessKey | tr -d \")
-  }
-
-  function elephant_graphql() {
-    export APOLLO_KEY=$(pass elephant/graphql_api_key)
-    export APOLLO_ENGINE_KEY=$APOLLO_KEY
-  }
-
-  export NPM_TOKEN="$(pass elephant/npm)"
-  export YARN_NPM_AUTH_TOKEN="${NPM_TOKEN}"
 
   # gcloud_start=`date +%s.%N`
   ##
@@ -144,11 +118,6 @@ else
 
   fi
 
-  # configure aws sso for elephant healthcare (my employer)
-  if [ $commands[aws] ]; then
-    export AWS_PROFILE=ele-main
-    export AWS_PROFILE=ele-main-admin
-  fi
   # gcloud_end=`date +%s.%N`
   # echo "Gcloud Time: $((gcloud_end-gcloud_start))"
 
@@ -180,7 +149,6 @@ else
     lsof -n 2> /dev/null | rg "$1" | rg node | awk '{print $2}' | xargs kill -9 2> /dev/null
   }
 
-
   if [ $commands[docker] ]; then
     alias dmem='docker stats $(docker ps --format={{.Names}})'
     alias drun='docker run -it -u $UID --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
@@ -202,7 +170,7 @@ else
   export UID=$UID # Helps with docker_files, allows to use UID as env
   export GPG_TTY=$(tty) # gpg doesn't work in some environments without this env (WSL)
   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-  export EDITOR='nvim' # Use neovim as editor
+  export EDITOR='nvim' # Use code as editor
 
   gpgconf --launch gpg-agent
 
@@ -210,7 +178,8 @@ else
 
   # [ -f ~/emsdk-portable/emsdk_env.sh ] && source ~/emsdk-portable/emsdk_env.sh
 
-  if grep -q Microsoft /proc/version; then
+  if [[ $OSTYPE == 'darwin'* ]]; then
+  elif grep -q Microsoft /proc/version; then
     # Detect if we are running on WSL
     # If so, docker should connect to the host daemon
     export DOCKER_HOST=tcp://localhost:2375

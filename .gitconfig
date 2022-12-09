@@ -1,7 +1,7 @@
 [user]
   email = me@ruben.io
   name = Ruben Paz
-  signkey = 84B30D23
+  signingkey = 84B30D23
 [commit]
   gpgsign = true
 [alias]
@@ -23,7 +23,8 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /home/istar/.gitignore_global
+	excludesfile = "$HOME/.gitignore_global"
+  sshCommand="ssh -i $HOME/.ssh/id_rsa_personal"
 [pull]
 	rebase = true
 [filter "lfs"]
