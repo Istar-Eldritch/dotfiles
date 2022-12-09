@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " Statistics
 Plug 'wakatime/vim-wakatime' " https://wakatime.com/vim
-
+Plug 'vimsence/vimsence' "Integration with discord
 " Navigation
 Plug 'MattesGroeger/vim-bookmarks' " Extended bookmarks
 Plug 'scrooloose/nerdtree' " File explorer
@@ -93,6 +93,10 @@ source ~/.vim/custom_cfg/writing.vim
 " Cosmetic
 source ~/.vim/custom_cfg/cosmetic.vim
 
+" Typescript
+" Use LSP omni-completion in typescript files
+autocmd Filetype typescript setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
 
 "if (empty($TMUX))
 "    if (has("nvim"))
@@ -130,3 +134,5 @@ vnoremap <F9> zf
 imap <c-space> <c-x><c-o>
 " Show the eTag navigator
 nmap <F8> :TagbarToggle<CR>
+
+
