@@ -19,7 +19,8 @@ Plug 'tyru/open-browser-github.vim' "Allows opening buffers in github
 Plug 'Yggdroot/indentLine' " Show indentation characters
 " Plug 'ryanoasis/vim-devicons' " Nice icons for files and others
 " Plug 'skielbasa/vim-material-monokai' " monokai color scheme
-Plug 'altercation/vim-colors-solarized' " solarized color scheme
+" Plug 'altercation/vim-colors-solarized' " solarized color scheme
+Plug 'fcpg/vim-farout'
 " Typescript tools
 " Plug 'Quramy/tsuquyomi'
 " Plug 'leafgarland/typescript-vim'
