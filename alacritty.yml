@@ -149,7 +149,7 @@ font:
   # use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Colors (LoSpec SLSO8)
 # colors:
@@ -178,63 +178,38 @@ draw_bold_text_with_bright_colors: false
 #     cyan:    '0xffd4a3'
 #     white:   '0xffecd6'
 
-# Colors (Custom Legacy terminal)
+
+# Colors (Farout adaptation)
 colors:
   primary:
-    background: '0x140b03'
-    foreground: '0xab5927'
+    background: '0x0f0908'
+    foreground: '0xf2ddbc'
   # Normal colors
   normal:
-    black:   '0x0f0e0d'
-    red:     '0x8c2920'
-    green:   '0xa85334'
-    yellow:  '0x8c3715'
-    blue:    '0xa84300'
-    magenta: '0x965c15'
-    cyan:    '0xa87e00'
-    white:   '0xa19685'
+    black:   '0x0f0908'
+    red:     '0xbf472c'
+    green:   '0xa67458'
+    yellow:  '0xd47d49'
+    blue:    '0x8a4b53'
+    magenta: '0xa4895c'
+    cyan:    '0xe0ccae'
+    white:   '0xe0ccae'
 
+  # Dim colors
+  #
+  # If the bright colors are not set, they will be calculated automatically
+  # based on the `normal` colors.
   # Bright colors
   bright:
-    black:   '0x1a1815'
-    red:     '0xe34234'
-    green:   '0xff7f50'
-    yellow:  '0xe25822'
-    blue:    '0xff6600'
-    magenta: '0xed9121'
-    cyan:    '0xffbf00'
-    white:   '0xf7e7ce'
+    black:   '0x1f1311'
+    red:     '0x6b4035'
+    green:   '0xf2a766'
+    yellow:  '0xbf472c'
+    blue:    '0x66292f'
+    magenta: '0xa4896f'
+    cyan:    '0xf2ddbc'
+    white:   '0xf2ddbc'
 
-
-
-# Colors (Solarized Dark)
-# colors:
-#   # Default colors
-#   primary:
-#     background: '0x002b36'
-#     foreground: '0x839496'
-# 
-#   # Normal colors
-#   normal:
-#     black:   '0x073642'
-#     red:     '0xdc322f'
-#     green:   '0x859900'
-#     yellow:  '0xb58900'
-#     blue:    '0x268bd2'
-#     magenta: '0xd33682'
-#     cyan:    '0x2aa198'
-#     white:   '0xeee8d5'
-# 
-#   # Bright colors
-#   bright:
-#     black:   '0x002b36'
-#     red:     '0xcb4b16'
-#     green:   '0x586e75'
-#     yellow:  '0x657b83'
-#     blue:    '0x839496'
-#     magenta: '0x6c71c4'
-#     cyan:    '0x93a1a1'
-#     white:   '0xfdf6e3'
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
@@ -255,9 +230,21 @@ colors:
   # When these are not set, they're filled with sensible defaults.
   #
   # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
+  #   `- { index: 233, color: '0x1f1311' }`
   #
-  indexed_colors: []
+  indexed_colors: [
+    { index: 95, color: '0x8a4b53' },
+    { index: 130, color: '0xbf472c' },
+    { index: 137, color: '0xa67458' }, # or 0xa4896f
+    { index: 173, color: '0xd47d49' },
+    { index: 187, color: '0xe0ccae' },
+    { index: 215, color: '0xf2a766' },
+    { index: 223, color: '0xf2ddbc' },
+    { index: 234, color: '0x291916' },
+    { index: 233, color: '0x1f1311' },
+    { index: 238, color: '0x66292f' },
+    { index: 239, color: '0x6b4035' },
+  ]
 
 # Visual Bell
 #
@@ -290,7 +277,7 @@ bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window:
-  opacity: 0.99
+  opacity: 0.98
 
 # Mouse bindings
 #
