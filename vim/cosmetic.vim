@@ -1,5 +1,5 @@
 " Styles
-set t_Co=256
+set t_Co=16
 set background=dark
 " Next line makes dots look alright with solarized
 "let g:indentLine_color_term = 24
@@ -56,10 +56,10 @@ hi! DiffAdd ctermbg=None
 hi! DiffChange ctermbg=None
 hi! DiffDelete ctermbg=None
 hi! DiffText ctermbg=None
-hi! IncSearch ctermbg=None
-hi! Search ctermbg=None
+" hi! IncSearch ctermbg=None
+" hi! Search ctermbg=None
 hi! Directory ctermbg=None
-hi! MatchParen ctermbg=None
+" hi! MatchParen ctermbg=None
 hi! SpellBad ctermbg=None
 hi! SpellCap ctermbg=None
 hi! SpellLocal ctermbg=None
