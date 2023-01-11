@@ -178,37 +178,40 @@ draw_bold_text_with_bright_colors: true
 #     cyan:    '0xffd4a3'
 #     white:   '0xffecd6'
 
+# Colors (personal take on classical terminal)
 
-# Colors (Farout adaptation)
 colors:
   primary:
-    background: '0x0f0908'
-    foreground: '0xf2ddbc'
-  # Normal colors
+    background: '0x1f0800'
+    foreground: '0xffe7cc'
   normal:
-    black:   '0x0f0908'
-    red:     '0xbf472c'
-    green:   '0xa67458'
-    yellow:  '0xd47d49'
-    blue:    '0x8a4b53'
-    magenta: '0xa4895c'
-    cyan:    '0xe0ccae'
-    white:   '0xe0ccae'
+    black:   '0x1f0800'
+    red:     '0xd65600'
+    green:   '0xffb152'
+    yellow:  '0xa67458'
+    blue:    '0xd47d49'
+    magenta: '0x993300'
+    cyan:    '0xfed490'
+    white:   '0xffe7cc'
 
-  # Dim colors
-  #
-  # If the bright colors are not set, they will be calculated automatically
-  # based on the `normal` colors.
-  # Bright colors
   bright:
-    black:   '0x1f1311'
-    red:     '0x6b4035'
-    green:   '0xf2a766'
-    yellow:  '0xbf472c'
-    blue:    '0x66292f'
-    magenta: '0xa4896f'
-    cyan:    '0xf2ddbc'
-    white:   '0xf2ddbc'
+    black:   '0x1f0800'
+    red:     '0xd65600'
+    green:   '0xffb152'
+    yellow:  '0xa67458'
+    blue:    '0xd47d49'
+    magenta: '0x993300'
+    cyan:    '0xfed490'
+    white:   '0xffe7cc'
+
+# 0 - ffe7cc
+# 1 - fed490
+# 2 - ffb152
+# 3 - fe8e16
+# 4 - d65600
+# 5 - 993300
+# 6 - 5b1f00
+# 7 - 1f0800
 
   # Dim colors
   #
