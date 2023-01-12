@@ -149,7 +149,7 @@ font:
   # use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # Colors (LoSpec SLSO8)
 # colors:
@@ -178,7 +178,7 @@ draw_bold_text_with_bright_colors: true
 #     cyan:    '0xffd4a3'
 #     white:   '0xffecd6'
 
-# Colors (personal take on classical terminal)
+# Colors (personal take on vintage terminal)
 
 colors:
   primary:
@@ -203,6 +203,7 @@ colors:
     magenta: '0x993300'
     cyan:    '0xfed490'
     white:   '0xffe7cc'
+
 
 # 0 - ffe7cc
 # 1 - fed490
@@ -236,17 +237,6 @@ colors:
   #   `- { index: 233, color: '0x1f1311' }`
   #
   indexed_colors: [
-    { index: 95, color: '0x8a4b53' },
-    { index: 130, color: '0xbf472c' },
-    { index: 137, color: '0xa67458' }, # or 0xa4896f
-    { index: 173, color: '0xd47d49' },
-    { index: 187, color: '0xe0ccae' },
-    { index: 215, color: '0xf2a766' },
-    { index: 223, color: '0xf2ddbc' },
-    { index: 234, color: '0x291916' },
-    { index: 233, color: '0x1f1311' },
-    { index: 238, color: '0x66292f' },
-    { index: 239, color: '0x6b4035' },
   ]
 
 # Visual Bell
@@ -280,7 +270,7 @@ bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window:
-  opacity: 0.98
+  opacity: 0.90
 
 # Mouse bindings
 #
@@ -516,7 +506,7 @@ key_bindings:
   - { key: Plus,      mods: Control,       action: IncreaseFontSize }
     # - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  # - { key: F11,      mods: None,          action: ToggleFullscreen }
+  - { key: F11,      mods: None,          action: ToggleFullscreen }
 
  
   # (macOS only)
