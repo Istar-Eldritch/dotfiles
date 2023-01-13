@@ -5,8 +5,6 @@ set background=dark
 "let g:indentLine_color_term = 24
 let g:indentLine_char = '·'
 
-colorscheme farout
-
 " Monokai configs
 " let g:materialmonokai_subtle_spell=0
 " let g:materialmonokai_custom_lint_indicators=1
