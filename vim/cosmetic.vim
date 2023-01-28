@@ -15,9 +15,9 @@ let g:indentLine_char = '·'
 hi! Normal ctermbg=None ctermfg=6
 hi! NonText ctermbg=None ctermfg=3
 hi! Comment ctermbg=None ctermfg=3
-hi! Constant ctermbg=None ctermfg=2
+hi! Constant ctermbg=None cterm=None ctermfg=2
 hi! Error ctermbg=None ctermfg=5
-hi! Identifier ctermbg=None ctermfg=2
+hi! Identifier cterm=None ctermbg=None ctermfg=2
 hi! Ignore ctermbg=None ctermfg=3
 hi! PreProc ctermbg=None ctermfg=4
 hi! Special ctermbg=None ctermfg=2
@@ -43,10 +43,10 @@ hi! helpLeadBlank ctermbg=None ctermfg=3
 hi! helpNormal ctermbg=None ctermfg=3
 hi! Visual ctermbg=5 ctermfg=6
 hi! VisualNOS ctermbg=5 ctermfg=6
-hi! Pmenu ctermbg=None
-hi! PmenuSbar ctermbg=None
-hi! PmenuSel ctermbg=None
-hi! PmenuThumb ctermbg=None
+hi! Pmenu ctermbg=0 ctermfg=3
+hi! PmenuSel ctermbg=4 ctermfg=7
+hi! PmenuSbar ctermbg=None ctermfg=None
+hi! PmenuThumb ctermbg=3 ctermfg=3
 hi! FoldColumn ctermbg=None ctermfg=3
 hi! Folded ctermbg=None ctermfg=3
 hi! WildMenu ctermbg=None
