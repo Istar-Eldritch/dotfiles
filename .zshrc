@@ -2,6 +2,7 @@
 if [ "$TERM" != "tmux-256color" ]; then
     exec tmux attach
 else
+  TERM=xterm-256color
   # zplug_start=`date +%s.%N`
   # Plugin Manager
   source ~/.zplug/init.zsh
