@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
   -- Languages and syntax support
   use 'elzr/vim-json'
   use 'plasticboy/vim-markdown'
+  use 'hashivim/vim-terraform'
 
   -- autocomplete
   use 'hrsh7th/cmp-buffer'
