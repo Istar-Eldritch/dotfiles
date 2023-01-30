@@ -1,6 +1,6 @@
 # Run tmux when new terminal is created
-if [ "$TERM" != "screen-256color" ]; then
-    #exec tmux attach
+if [ "$TERM" != "tmux-256color" ]; then
+    exec tmux attach
 else
   # zplug_start=`date +%s.%N`
   # Plugin Manager
