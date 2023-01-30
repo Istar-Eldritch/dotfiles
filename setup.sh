@@ -37,8 +37,14 @@ mkdir -p $HOME/.local/bin
 # LINK CONFIGURATIONS
 echo LINKING CONFIGURATIONS...
 
+rm -fr $XDG_CONFIG_HOME/nvim/init.vim
+rm -fr $XDG_CONFIG_HOME/nvim/init.lua
+ln -s $CURRENT_DIR/nvim/init.lua $XDG_CONFIG_HOME/nvim/init.lua
+
 rm -fr $HOME/.vim/custom_cfg
-ln -s $CURRENT_DIR/vim $HOME/.vim/custom_cfg
+rm -fr $HOME/.vim/configs
+rm -fr $XDG_CONFIG_HOME/nvim/configs
+ln -s $CURRENT_DIR/nvim/configs $XDG_CONFIG_HOME/nvim/configs
 
 rm -fr $HOME/.vim/thesaurus
 ln -s $CURRENT_DIR/thesaurus $HOME/.vim/thesaurus
@@ -48,9 +54,6 @@ ln -s $CURRENT_DIR/.tmux.conf $HOME/.tmux.conf
 
 rm -fr $HOME/.zshrc
 ln -s $CURRENT_DIR/.zshrc $HOME/.zshrc
-
-rm -fr $XDG_CONFIG_HOME/nvim/init.vim
-ln -s $CURRENT_DIR/init.vim $XDG_CONFIG_HOME/nvim/init.vim
 
 rm -fr $HOME/.gitconfig
 ln -s $CURRENT_DIR/.gitconfig $HOME/.gitconfig
@@ -89,3 +92,6 @@ elif [ "$(uname)" == "Darwin" ]; then
 fi
 
 echo CONFIGURATIONS LINKED.
+
+# Update nvim plugins
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
