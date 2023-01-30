@@ -42,6 +42,8 @@ return require('packer').startup(function(use)
   use 'Xuyuanp/nerdtree-git-plugin' -- Show git status in nerd-tree
   use 'tpope/vim-fugitive' -- git extensions and commands
 
+  use 'mfussenegger/nvim-dap' -- debug adapter
+
   use 'rktjmp/lush.nvim' -- Theme creation
 
   -- Languages and syntax support
@@ -57,7 +59,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/vim-vsnip'
- 
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
