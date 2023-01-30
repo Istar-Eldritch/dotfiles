@@ -17,34 +17,34 @@ local lush = require('lush')
 local hsl = lush.hsl
 
 local light = {
-	hsl(55,100,95),
-	hsl(50,100,90),
-	hsl(45,100,85),
-	hsl(40,100,80),
-	hsl(35,100,75),
-	hsl(30,100,70),
-	hsl(25,100,65),
-	hsl(20, 100,60),
+	hsl(50,100,95),
+	hsl(45,100,90),
+	hsl(40,100,85),
+	hsl(35,100,80),
+	hsl(30,100,75),
+	hsl(25,100,70),
+	hsl(20,100,65),
+	hsl(15, 100,60),
 }
 
 local base = {
-	hsl(45,70,50),
-	hsl(40,70,50),
-	hsl(30,70,50),
-	hsl(25,70,50),
-	hsl(20,70,50),
-	hsl(15,70,50),
-	hsl(10,70,50),
-	hsl(5, 70,50)
+	hsl(36,75,50),
+	hsl(32,75,50),
+	hsl(29,75,50),
+	hsl(25,75,50),
+	hsl(20,75,50),
+	hsl(15,75,50),
+	hsl(10,75,50),
+	hsl(05,75,50)
 }
 
 local dark = {
-	hsl(40,70,40),
-	hsl(35,70,45),
-	hsl(25,70,30),
-	hsl(20,70,25),
-	hsl(15,70,20),
-	hsl(10,70,15),
+	hsl(32,70,45),
+	hsl(28,70,40),
+	hsl(25,70,35),
+	hsl(20,70,30),
+	hsl(15,70,25),
+	hsl(10,70,20),
 	hsl(05,70,10),
 	hsl(00,70,5)
 }
@@ -59,7 +59,7 @@ local theme = lush(function(injected_functions)
     -- See :h highlight-groups
     --
     -- ColorColumn  {  }, -- Columns set with 'colorcolumn'
-    Conceal      { fg=dark[6] }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
+    Conceal      { fg=dark[5] }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     -- Cursor       { }, -- Character under the cursor
     -- lCursor      { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- Like Cursor, but used when in IME mode |CursorIM|
@@ -70,7 +70,7 @@ local theme = lush(function(injected_functions)
     DiffChange   { fg=base[4] }, -- Diff mode: Changed line |diff.txt|
     DiffDelete   { fg=base[8] }, -- Diff mode: Deleted line |diff.txt|
     DiffText     { bg=dark[6], fg=base[4] }, -- Diff mode: Changed text within a changed line |diff.txt|
-    EndOfBuffer  { fg=dark[6] }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+    EndOfBuffer  { fg=dark[5] }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- Cursor in a focused terminal
     -- TermCursorNC { }, -- Cursor in an unfocused terminal
     ErrorMsg     { fg=light[1], bg=base[8]}, -- Error messages on the command line
@@ -88,17 +88,17 @@ local theme = lush(function(injected_functions)
     MsgSeparator { fg=base[3] }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg      { fg=base[3] }, -- |more-prompt|
     NonText      { fg=dark[5] }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal       { fg=light[7], bg=nil }, -- Normal text
-    NormalFloat  { fg=light[7] }, -- Normal text in floating windows.
-    NormalNC     { fg=light[7] }, -- normal text in non-current windows
+    Normal       { fg=light[5], bg=nil }, -- Normal text
+    NormalFloat  { fg=light[5] }, -- Normal text in floating windows.
+    NormalNC     { fg=light[5] }, -- normal text in non-current windows
     Pmenu        { fg=dark[3] }, -- Popup menu: Normal item.
     PmenuSel     { fg=light[7] }, -- Popup menu: Selected item.
-    PmenuSbar    { fg=dark[6] }, -- Popup menu: Scrollbar.
+    PmenuSbar    { fg=dark[5] }, -- Popup menu: Scrollbar.
     PmenuThumb   { fg=dark[3] }, -- Popup menu: Thumb of the scrollbar.
     Question     { fg=base[5] }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine { fg=base[1] }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search       { fg=light[5], bg=base[5] }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-    SpecialKey   { fg=dark[6] }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
+    Search       { fg=light[6], bg=base[5] }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    SpecialKey   { fg=base[6] }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad     { fg=base[5], gui="underline", bg=dark[5]}, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap     { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal   { fg=base[5], gui="underline", bg=nil}, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
@@ -126,12 +126,12 @@ local theme = lush(function(injected_functions)
 
     Comment        { fg=dark[4]}, -- Any comment
 
-    Constant       { fg=base[3] }, -- (*) Any constant
-    -- String         { }, --   A string constant: "this is a string"
-    -- Character      { }, --   A character constant: 'c', '\n'
-    -- Number         { }, --   A number constant: 234, 0xff
-    -- Boolean        { }, --   A boolean constant: TRUE, false
-    -- Float          { }, --   A floating point constant: 2.3e10
+    Constant       { fg=light[5] }, -- (*) Any constant
+    String         { fg=base[6] }, --   A string constant: "this is a string"
+    Character      { fg=base[6] }, --   A character constant: 'c', '\n'
+    Number         { fg=base[6] }, --   A number constant: 234, 0xff
+    Boolean        { fg=base[6] }, --   A boolean constant: TRUE, false
+    Float          { fg=base[6] }, --   A floating point constant: 2.3e10
 
     Identifier     { fg=base[5], gui="bold" }, -- (*) Any variable name
     Function       { Identifier }, --   Function name (also: methods for classes)
@@ -140,17 +140,17 @@ local theme = lush(function(injected_functions)
     -- Conditional    { }, --   if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --   case, default, etc.
-    -- Operator       { }, --   "sizeof", "+", "*", etc.
-    Keyword        { fg=base[6] }, --   any other keyword
+    Operator       { fg=base[3] }, --   "sizeof", "+", "*", etc.
+    Keyword        { fg=base[4] }, --   any other keyword
     -- Exception      { }, --   try, catch, throw
 
-    PreProc        { fg=light[7] }, -- (*) Generic Preprocessor
+    PreProc        { fg=dark[2] }, -- (*) Generic Preprocessor
     -- Include        { }, --   Preprocessor #include
     -- Define         { }, --   Preprocessor #define
     Macro          { Function }, --   Same as Define
     -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
 
-    Type           { fg=base[5], gui="bold" }, -- (*) int, long, char, etc.
+    Type           { fg=base[3], gui="bold" }, -- (*) int, long, char, etc.
     -- StorageClass   { }, --   static, register, volatile, etc.
     -- Structure      { }, --   struct, union, enum, etc.
     -- Typedef        { }, --   A typedef
@@ -265,7 +265,6 @@ local theme = lush(function(injected_functions)
     sym"@preproc"           { }, -- PreProc
     sym"@debug"             { }, -- Debug
     sym"@tag"               { }, -- Tag
-    
 
     GitGutterAdd { fg = base[1] },
     GitGutterChange { fg = base[3] },
