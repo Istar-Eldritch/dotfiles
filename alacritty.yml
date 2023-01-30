@@ -182,27 +182,27 @@ draw_bold_text_with_bright_colors: false
 
 colors:
   primary:
-    background: '0x1f0800'
-    foreground: '0xffe7cc'
+    background: '0x160404'
+    foreground: '0xffbf80'
   normal:
-    black:   '0x1f0800'
-    red:     '0xd65600'
-    green:   '0xffb152'
-    yellow:  '0xa67458'
-    blue:    '0xd47d49'
-    magenta: '0x993300'
-    cyan:    '0xfed490'
-    white:   '0xffe7cc'
+    black:   '0x2b0b08'
+    red:     '0xdf3020'
+    green:   '0xdf9320'
+    yellow:  '0xdf7c20'
+    blue:    '0xdf5020'
+    magenta: '0x702810'
+    cyan:    '0xffa666'
+    white:   '0xffbf80'
 
   bright:
-    black:   '0x1f0800'
-    red:     '0xd65600'
-    green:   '0xffb152'
-    yellow:  '0xa67458'
-    blue:    '0xd47d49'
-    magenta: '0x993300'
-    cyan:    '0xfed490'
-    white:   '0xffe7cc'
+    black:   '0x2b0b08'
+    red:     '0xdf3020'
+    green:   '0xdf9320'
+    yellow:  '0xdf7c20'
+    blue:    '0xdf5020'
+    magenta: '0x702810'
+    cyan:    '0xffa666'
+    white:   '0xffbf80'
 
 
 # 0 - ffe7cc
@@ -270,7 +270,7 @@ bell:
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 window:
-  opacity: 0.90
+  opacity: 0.98
 
 # Mouse bindings
 #
