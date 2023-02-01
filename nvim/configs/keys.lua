@@ -2,7 +2,7 @@
 
 local function nmap(k, cmd) vim.api.nvim_set_keymap('n', k, cmd, { noremap = true }) end
 
-nmap('<c-n>', '<cmd>NERDTreeToggle<CR>');
+nmap('<leader>n', '<cmd>NERDTreeToggle<CR>');
 
 -- Telescope
 nmap('<leader>ff', '<cmd>Telescope find_files<cr>');
