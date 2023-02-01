@@ -71,6 +71,16 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+if [ $commands[pyenv] ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+  eval "$(pyenv init -)"
+  eval "$(command pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 PATH=$PATH:~/.local/bin
