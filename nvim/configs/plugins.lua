@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
   use 'tyru/open-browser.vim'
   use 'tyru/open-browser-github.vim'
 
+  use 'MattesGroeger/vim-bookmarks'
+
   -- Cosmetic
 
   use 'Yggdroot/indentLine' -- Show indentation characters
