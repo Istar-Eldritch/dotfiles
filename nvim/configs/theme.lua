@@ -78,8 +78,8 @@ local theme = lush(function(injected_functions)
     Folded       { fg=dark[3] }, -- Line used for closed folds
     FoldColumn   { }, -- 'foldcolumn'
     SignColumn   { bg=nil }, -- Column where |signs| are displayed
-    IncSearch    { fg=light[5], bg=base[5] }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    Substitute   { fg=light[5], bg=base[5] }, -- |:substitute| replacement text highlighting
+    IncSearch    { fg=dark[6], gui="bold", bg=base[3] }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Substitute   { fg=dark[6], gui="bold", bg=base[3] }, -- |:substitute| replacement text highlighting
     LineNr       { fg=dark[3] }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr { fg=base[3] }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen   { fg=base[3] }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -97,7 +97,7 @@ local theme = lush(function(injected_functions)
     PmenuThumb   { fg=dark[3] }, -- Popup menu: Thumb of the scrollbar.
     Question     { fg=base[5] }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine { fg=base[1] }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    Search       { fg=light[6], bg=base[5] }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    Search       { fg=dark[6], gui="bold", bg=base[3]}, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     SpecialKey   { fg=base[6] }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad     { fg=base[5], gui="underline", bg=dark[5]}, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap     { SpellBad }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -109,7 +109,7 @@ local theme = lush(function(injected_functions)
     TabLineFill  { }, -- Tab pages line, where there are no labels
     TabLineSel   { }, -- Tab pages line, active tab page label
     Title        { fg=base[3] }, -- Titles for output from ":set all", ":autocmd" etc.
-    Visual       { bg=dark[5], fg=light[7]}, -- Visual mode selection
+    Visual       { fg=dark[6], gui="bold", bg=base[3]}, -- Visual mode selection
     VisualNOS    { bg=dark[5], fg=light[8]}, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg   { fg=base[6] }, -- Warning messages
     Whitespace   { fg=dark[6] }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
