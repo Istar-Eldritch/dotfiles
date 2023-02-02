@@ -23,8 +23,8 @@
 [push]
 	default = simple
 [core]
-	excludesfile = "$HOME/.gitignore_global"
-  sshCommand="ssh -i $HOME/.ssh/id_rsa"
+	excludesfile = "~/.gitignore_global"
+  sshCommand="ssh -i ~/.ssh/id_rsa"
 [pull]
 	rebase = true
 [filter "lfs"]
