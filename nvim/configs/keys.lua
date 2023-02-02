@@ -10,3 +10,5 @@ nmap('<leader>fg', '<cmd>Telescope live_grep<cr>');
 nmap('<leader>fb', '<cmd>Telescope buffers<cr>');
 nmap('<leader>fh', '<cmd>Telescope help_tags<cr>');
 nmap('<ESC>', '<cmd>noh<cr>');
+
+nmap('<leader>rq', '<Plug>RestNvim');
