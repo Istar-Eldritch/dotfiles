@@ -32,7 +32,7 @@ nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
 nvim_lsp.omnisharp.setup {
   on_attach = on_attach,
   handlers = {
-    -- ["textDocument/definition"] = require('omnisharp_extended').handler,
+    ["textDocument/definition"] = require('omnisharp_extended').handler,
   },
   cmd = { "omnisharp", "--languageserver" , "--hostPID", tostring(pid) }
 }
