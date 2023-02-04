@@ -8,4 +8,3 @@ vim.o.nowrap = true;
 vim.g.indentLine_setColors = 0;
 vim.g.indentLine_char = '.';
 
-require('lush')(require('theme'))

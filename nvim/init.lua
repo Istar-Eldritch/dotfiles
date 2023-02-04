@@ -8,7 +8,6 @@ package.path = config .. '/nvim/configs/?.lua;' .. package.path
 require("plugins");
 require("lsp");
 require("keys");
-require("cosmetic");
 require("completion");
 
 vim.opt.encoding = "utf-8";
@@ -18,3 +17,8 @@ vim.opt.tabstop=2;
 vim.opt.shiftwidth=2
 -- On pressing tab, insert 2 spaces
 vim.o.expandtab = true;
+
+
+require("cosmetic");
+require('lush')(require('theme'))
+
