@@ -68,6 +68,8 @@ mkdir -p $XDG_CONFIG_HOME/alacritty
 rm -fr $XDG_CONFIG_HOME/alacritty/alacritty.yml
 ln -s $CURRENT_DIR/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 
+rm -fr $XDG_CONFIG_HOME/zellij
+ln -s $CURRENT_DIR/zellij $XDG_CONFIG_HOME/zellij
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   
