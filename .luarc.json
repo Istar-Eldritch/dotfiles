@@ -1,0 +1,45 @@
+{
+    "diagnostics": {
+        "globals": [ "vim" ],
+        "disable": [
+            "close-non-object"
+        ],
+        "groupFileStatus": {
+            "ambiguity": "Any",
+            "await": "Any",
+            "duplicate": "Any",
+            "global": "Any",
+            "luadoc": "Any",
+            "redefined": "Any",
+            "strict": "Any",
+            "type-check": "Any",
+            "unbalanced": "Any",
+            "unused": "Any"
+        },
+        "ignoredFiles": "Opened",
+        "libraryFiles": "Opened"
+    },
+    "runtime": {
+        "version": "Lua 5.4",
+        "path": [
+            "nvim/?.lua",
+            "nvim/configs/?.lua"
+        ],
+        "pathStrict": true
+    },
+    "workspace": {
+        "maxPreload": 1600,
+        "preloadFileSize": 1000,
+        "ignoreDir": [
+
+        ],
+        "checkThirdParty": false
+    },
+    
+    "doc": {
+        "privateName": [
+            "_*"
+        ]
+    }
+}
+

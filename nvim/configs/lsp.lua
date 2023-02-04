@@ -1,9 +1,10 @@
 local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+local pid = vim.fn.getpid()
+
+local on_attach = function(_, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -24,39 +25,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
 
-local lua_runtime_path = vim.split(package.path, ";")
-table.insert(lua_runtime_path, "lua/?.lua")
-table.insert(lua_runtime_path, "lua/?/init.lua")
-
--- Use a loop to conveniently both setup defined servers 
--- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "rust_analyzer", "tsserver", "sumneko_lua" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-	on_attach = on_attach,
-        settings = {
-    		Lua = {
-    			runtime = {
-    			    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-    			    version = "LuaJIT",
-    			    -- Setup your lua path
-    			    path = lua_runtime_path,
-    			},
-    			diagnostics = {
-    			    -- Get the language server to recognize the `vim` global
-    			    globals = { "vim" },
-    			},
-    			workspace = {
-    			    -- Make the server aware of Neovim runtime files
-    			    library = vim.api.nvim_get_runtime_file("", true),
-    			},
-    			-- Do not send telemetry data containing a randomized but unique identifier
-    			telemetry = {
-    			    enable = false,
-    			},
-    		},
-	},
-
-  }
-end
+nvim_lsp.pyright.setup { on_attach = on_attach }
+nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
+nvim_lsp.tsserver.setup { on_attach = on_attach }
+nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
+nvim_lsp.omnisharp.setup {
+  on_attach = on_attach,
+  handlers = {
+    -- ["textDocument/definition"] = require('omnisharp_extended').handler,
+  },
+  cmd = { "omnisharp", "--languageserver" , "--hostPID", tostring(pid) }
+}
 

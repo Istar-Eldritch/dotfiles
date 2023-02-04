@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
   use 'elzr/vim-json'
   use 'plasticboy/vim-markdown'
   use 'hashivim/vim-terraform'
+  use 'Hoffs/omnisharp-extended-lsp.nvim' -- .net / c#
 
   -- autocomplete
   use 'hrsh7th/cmp-buffer'
