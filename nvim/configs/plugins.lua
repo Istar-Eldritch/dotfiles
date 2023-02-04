@@ -34,7 +34,19 @@ return require('packer').startup(function(use)
   -- Cosmetic
 
   use 'Yggdroot/indentLine' -- Show indentation characters
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require 'nvim-treesitter.configs' .setup {
+        ensure_installed = { 'rust', 'lua', 'python', 'c_sharp' },
+        sync_install = false,
+        auto_install = true,
+        highlight = {
+          enable = true
+        }
+      }
+    end
+  }
 
   -- Coding tools
 
