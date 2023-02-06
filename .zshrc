@@ -84,6 +84,8 @@ fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 PATH=$PATH:~/.local/bin
+PATH=$PATH:/usr/local/bin
+
 # Rust
 if [ $commands[rustc] ]; then
   export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
