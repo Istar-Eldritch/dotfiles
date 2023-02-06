@@ -16,7 +16,8 @@ return require('packer').startup(function(use)
 
   -- Stats
   use 'wakatime/vim-wakatime' -- https://wakatime.com/vim
-  use 'vimsence/vimsence' --Integration with discord
+  -- use 'vimsence/vimsence' --Integration with discord
+  use 'dstein64/vim-startuptime' -- performance monitoring for vim
 
   -- Navigation
   use 'scrooloose/nerdtree'
