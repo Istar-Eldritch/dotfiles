@@ -17,8 +17,6 @@ vim.opt.tabstop=2;
 vim.opt.shiftwidth=2
 -- On pressing tab, insert 2 spaces
 vim.o.expandtab = true;
--- Do not fold markdown files
-vim.g.vim_markdown_folding_disabled = 1;
 
 require("cosmetic");
 require('lush')(require('theme'))

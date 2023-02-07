@@ -45,6 +45,12 @@ nvim_lsp.pyright.setup { on_attach = on_attach }
 nvim_lsp.rust_analyzer.setup { on_attach = on_attach }
 nvim_lsp.tsserver.setup { on_attach = on_attach }
 nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
+nvim_lsp.marksman.setup {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    vim.api.nvim_command([[setlocal textwidth=120 formatoptions+=t]])
+  end
+}
 nvim_lsp.omnisharp.setup {
     on_attach = function(client, bufnr)
       on_attach(client, bufnr);

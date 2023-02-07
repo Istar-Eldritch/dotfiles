@@ -63,7 +63,6 @@ return require('packer').startup(function(use)
 
   -- Languages and syntax support
   use 'elzr/vim-json'
-  use 'plasticboy/vim-markdown'
   use 'hashivim/vim-terraform'
   use 'Hoffs/omnisharp-extended-lsp.nvim' -- .net / c#
 
