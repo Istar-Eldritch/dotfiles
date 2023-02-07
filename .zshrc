@@ -1,3 +1,5 @@
+set SHELL=/bin/zsh
+
 set ZELLIJ_AUTO_ATTACH=true
 
 if [[ -z "$ZELLIJ" ]]; then
