@@ -50,7 +50,7 @@ nvim_lsp.rust_analyzer.setup { on_attach = on_attach, settings = {
   }
 } }
 nvim_lsp.tsserver.setup { on_attach = on_attach }
-nvim_lsp.sumneko_lua.setup { on_attach = on_attach }
+nvim_lsp.lua_ls.setup { on_attach = on_attach }
 nvim_lsp.marksman.setup {
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
