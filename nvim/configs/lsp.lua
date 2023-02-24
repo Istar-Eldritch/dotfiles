@@ -39,6 +39,11 @@ local on_attach = function(_, bufnr)
 
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
+  vim.api.nvim_create_autocmd({'BufWritePre'}, {
+    pattern = '<buffer>',
+    command = 'lua vim.lsp.buf.format()'
+  })
+
 end
 
 nvim_lsp.pyright.setup { on_attach = on_attach }
