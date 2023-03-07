@@ -1,20 +1,5 @@
 set SHELL=/bin/zsh
 
-set ZELLIJ_AUTO_ATTACH=true
-
-if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-        zellij attach -c
-    else
-        zellij
-    fi
-
-    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-        exit
-    fi
-fi
-
-
 TERM=xterm-color
 # zplug_start=`date +%s.%N`
 # Plugin Manager
@@ -218,3 +203,8 @@ fi
 
 export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
+
+# Kitty alias
+if [[ -n "$KITTY_PID" ]]; then
+  alias icat='kitty +kitten icat'
+fi
