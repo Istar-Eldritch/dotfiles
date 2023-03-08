@@ -64,15 +64,8 @@ ln -s $CURRENT_DIR/.gitignore_global $HOME/.gitignore_global
 rm -fr $HOME/.npmrc
 ln -s $CURRENT_DIR/.npmrc $HOME/.npmrc
 
-mkdir -p $XDG_CONFIG_HOME/alacritty
-rm -fr $XDG_CONFIG_HOME/alacritty/alacritty.yml
-ln -s $CURRENT_DIR/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
-
 rm -fr $XDG_CONFIG_HOME/kitty
 ln -s $CURRENT_DIR/kitty $XDG_CONFIG_HOME/kitty
-
-rm -fr $XDG_CONFIG_HOME/zellij
-ln -s $CURRENT_DIR/zellij $XDG_CONFIG_HOME/zellij
 
 system=$(echo | awk -v t=$(uname -s) '{print substr(t, 1, 5)}')
 if [ "${system}" == "Linux" ]; then
