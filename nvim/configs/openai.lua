@@ -11,22 +11,26 @@ local headers = {
   authorization = 'Bearer ' .. token
 }
 
-local function pprint(t, i)
+local function pprint(t, i, acc)
+  if not acc then
+    acc = ''
+  end
+
   i = i or 0
   for k, v in pairs(t) do
     local indent = string.rep(" ", i)
     if type(v) == "table" then
-      print(indent .. tostring(k) .. " = {")
-      pprint(v, i + 2)
-      print(indent .. "}")
+      acc = acc .. indent .. tostring(k) .. " = {"
+      acc = pprint(v, i + 2, acc)
+      acc = acc .. indent .. "}"
     else
-      print(indent .. tostring(k) .. " = " .. tostring(v))
+      acc = acc .. indent .. tostring(k) .. " = " .. tostring(v)
     end
   end
+  return acc
 end
 
 local function autocomplete_selection()
-
   -- Get the current buffer number
   local bufnr = vim.api.nvim_get_current_buf()
 
@@ -56,7 +60,7 @@ local function autocomplete_selection()
   http.post('https://api.openai.com/v1/chat/completions', {
     headers = headers,
     body = vim.json.encode(data),
-    callback = function(response)
+    callback = function(response, err)
       vim.defer_fn(function()
         vim.api.nvim_buf_set_option(bufnr, 'readonly', false)
         vim.api.nvim_buf_set_name(bufnr, bufname)
@@ -71,14 +75,22 @@ local function autocomplete_selection()
           table.insert(lines_to_add, '')
           vim.api.nvim_buf_set_text(bufnr, final, 0, final, 0, lines_to_add)
         else
-          vim.api.nvim_err_writeln(pprint(body))
+          local error = 'Unparsed error'
+          if response then
+            if body then
+              error = pprint(body);
+            else
+              error = pprint(response)
+            end
+          else
+            error = pprint(err)
+          end
+          vim.api.nvim_err_writeln(error)
         end
-
         print('Done')
       end, 0)
     end
   })
-
 end
 
 vim.cmd([[command! -range=% OpenAIChatGPT lua require('openai').autocomplete_selection()]])
