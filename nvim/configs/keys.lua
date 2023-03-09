@@ -1,6 +1,6 @@
-
-
 local function nmap(k, cmd) vim.api.nvim_set_keymap('n', k, cmd, { noremap = true }) end
+
+local function vmap(k, cmd) vim.api.nvim_set_keymap('v', k, cmd, { noremap = true }) end
 
 nmap('<leader>n', '<cmd>NERDTreeToggle<CR>');
 
@@ -12,3 +12,5 @@ nmap('<leader>fh', '<cmd>Telescope help_tags<cr>');
 nmap('<ESC>', '<cmd>noh<cr>');
 
 nmap('<leader>rq', '<Plug>RestNvim');
+
+vmap('<leader>ga', '<cmd>OpenAIChatGPT<cr>');

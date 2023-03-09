@@ -160,6 +160,10 @@ function kill-port() {
   lsof -n 2> /dev/null | rg "$1" | rg node | awk '{print $2}' | xargs kill -9 2> /dev/null
 }
 
+function load_secrets() {
+  export OPENAI_TOKEN=$(pass openai/key)
+}
+
 if [ $commands[docker] ]; then
   alias dmem='docker stats $(docker ps --format={{.Names}})'
   alias drun='docker run -it -u $UID --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
