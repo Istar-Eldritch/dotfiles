@@ -2,15 +2,16 @@ local function nmap(k, cmd) vim.api.nvim_set_keymap('n', k, cmd, { noremap = tru
 
 local function vmap(k, cmd) vim.api.nvim_set_keymap('v', k, cmd, { noremap = true }) end
 
-nmap('<leader>n', '<cmd>NERDTreeToggle<CR>');
+nmap('<leader>n', '<cmd>NERDTreeToggle<CR>')
 
 -- Telescope
-nmap('<leader>ff', '<cmd>Telescope find_files<cr>');
-nmap('<leader>fg', '<cmd>Telescope live_grep<cr>');
-nmap('<leader>fb', '<cmd>Telescope buffers<cr>');
-nmap('<leader>fh', '<cmd>Telescope help_tags<cr>');
-nmap('<ESC>', '<cmd>noh<cr>');
+nmap('<leader>ff', '<cmd>Telescope find_files<cr>')
+nmap('<leader>fg', '<cmd>Telescope live_grep<cr>')
+nmap('<leader>fb', '<cmd>Telescope buffers<cr>')
+nmap('<leader>fh', '<cmd>Telescope help_tags<cr>')
+nmap('<ESC>', '<cmd>noh<cr>')
 
-nmap('<leader>rq', '<Plug>RestNvim');
+nmap('<leader>rq', '<Plug>RestNvim')
 
-vmap('<leader>ga', '<cmd>OpenAIChatGPT<cr>');
+vmap('<leader>ga', "<cmd>'<,'>OpenAIChatGPTRun<cr>")
+nmap('<leader>gd', '<cmd>OpenAIChatGPTCls<cr>')
