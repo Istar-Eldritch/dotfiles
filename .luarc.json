@@ -20,7 +20,7 @@
         "libraryFiles": "Opened"
     },
     "runtime": {
-        "version": "Lua 5.4",
+        "version": "LuaJIT",
         "path": [
             "nvim/?.lua",
             "nvim/configs/?.lua"
