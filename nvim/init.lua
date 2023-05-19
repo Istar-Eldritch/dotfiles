@@ -4,6 +4,12 @@ if (config == nil) then
 end
 
 package.path = config .. '/nvim/configs/?.lua;' .. package.path
+
+-- Encrypted files default recipients
+vim.cmd [[
+  let g:GPGDefaultRecipients = [ "me@ruben.io" ]
+]]
+
 require("plugins");
 require("lsp");
 require("keys");

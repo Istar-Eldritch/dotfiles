@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      require 'nvim-treesitter.configs' .setup {
+      require 'nvim-treesitter.configs'.setup {
         ensure_installed = { 'rust', 'lua', 'python', 'c_sharp' },
         sync_install = false,
         auto_install = true,
@@ -76,6 +76,9 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/vim-vsnip'
 
+  -- encryption
+  use 'jamessan/vim-gnupg'
+
   use {
     "rest-nvim/rest.nvim",
     requires = { "nvim-lua/plenary.nvim" },
@@ -104,7 +107,7 @@ return require('packer').startup(function(use)
           formatters = {
             json = "jq",
             html = function(body)
-              return vim.fn.system({"tidy", "-i", "-q", "-"}, body)
+              return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
             end
           },
         },

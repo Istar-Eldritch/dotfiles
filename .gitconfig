@@ -24,7 +24,7 @@
 	default = simple
 [core]
 	excludesfile = "~/.gitignore_global"
-  sshCommand="ssh -i ~/.ssh/id_rsa"
+  	sshCommand="ssh -i ~/.ssh/id_rsa"
 [pull]
 	rebase = true
 [filter "lfs"]
