@@ -56,6 +56,10 @@ return require('packer').startup(function(use)
   use 'airblade/vim-gitgutter' -- Shows +/- on the editor based on g diff HEAD^
   use 'Xuyuanp/nerdtree-git-plugin' -- Show git status in nerd-tree
   use 'tpope/vim-fugitive' -- git extensions and commands
+  use {
+    'ruifm/gitlinker.nvim', -- source control links to cloud
+    requires = 'nvim-lua/plenary.nvim',
+  }
 
   use 'mfussenegger/nvim-dap' -- debug adapter
 
