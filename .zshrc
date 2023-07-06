@@ -164,6 +164,14 @@ function load_secrets() {
   export OPENAI_TOKEN=$(pass openai/key)
 }
 
+function view_img() {
+  if [[ "$(uname)" == "Darwin" ]]; then
+    gpg --decrypt "$1" | open -a Preview.app -f
+  elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+    gpg --decrypt "$1" | fim
+  fi
+}
+
 if [ $commands[docker] ]; then
   alias dmem='docker stats $(docker ps --format={{.Names}})'
   alias drun='docker run -it -u $UID --network=host --rm -v $(pwd):/opt/work --workdir=/opt/work'
